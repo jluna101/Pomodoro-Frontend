@@ -1,1 +1,9 @@
+.App {
+	box-sizing: border-box;
+	margin-top: 20px;
+	padding-top: 20px;
+}
 
+body {
+	margin: 20px;
+}
