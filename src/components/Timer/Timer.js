@@ -6,13 +6,19 @@ import { useState, useEffect } from 'react';
 function Timer(props) {
 	return (
 		<div className="timerContainer">
-			<button className="timerButton">Start</button>
+			<button className="timerButton">
+				<i class="fa-solid fa-play"></i>
+			</button>
 
 			<div className="clockContainer">Timer: 0</div>
 
-			<button className="timerButton">Pause</button>
+			<button className="timerButton">
+				<i class="fa-solid fa-pause"></i>
+			</button>
 
-			<button className="timerButton">Reset</button>
+			<button className="timerButton">
+				<i class="fa-solid fa-rotate-right"></i>
+			</button>
 		</div>
 	);
 }
