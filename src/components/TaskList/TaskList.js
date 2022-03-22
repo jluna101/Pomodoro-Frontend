@@ -1,14 +1,17 @@
 //TaskList.js
 
 import React, { useState } from 'react';
-import Form from '../Form/Form';
+import CreateForm from '../CreateForm/CreateForm.js';
 
 function TaskList(props) {
-	const [modalToggle, setModalToggle] = useState(false);
+	const [modalVisible, setModalVisible] = useState(false);
+	function modalToggle(event) {
+		setModalVisible(true);
+	}
 	return (
 		<div className="tasklist-container">
 			<button>
-				<i className="fa-solid fa-plus"></i>
+				<i className="fa-solid fa-plus" onClick={modalToggle}></i>
 			</button>
 			<h3>Task List</h3>
 			<div className="list-container">
@@ -17,7 +20,7 @@ function TaskList(props) {
 					{/* mapped data - from fetch request */}
 				</ul>
 			</div>
-			<Form setModalToggle={setModalToggle} />
+			{modalVisible && <CreateForm setModalVisible={setModalVisible} />}
 		</div>
 	);
 }

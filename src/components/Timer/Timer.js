@@ -13,20 +13,28 @@ function Timer(props) {
 	// add event handler on click to start timer
 	// add event handler on click to pause timer
 	// add event handler on click to reset timer
+	
+	const [timer, setTimer] = useState();
 
 	function pomTimer() {
-		let time;
+		let time = 3000;
 		let timeInterval;
 		timeInterval = setInterval(pomTimer, 1000);
 		time--;
 		console.log('Timer works');
+		// clockContainer class text === pom Timer
 	}
-
-	const [timer, setTimer] = useState();
+	// set initial state of the timer to be 10 * 1000
+	// timeinterval: state that is changed every second.
+	// useEffect to change state every time a second passes
+	//  useEffect (() => {
+	// setTime(timeInterval);
+	// }, [time])
 
 	return (
 		<div className="timerContainer">
 			<div className="clockContainer">Timer: 0</div>
+			{/* use string interpolation/bracket notation to put time on the page */}
 			{/* setTimer(useInterval)? */}
 
 			<button className="timerButton" onClick={pomTimer}>
