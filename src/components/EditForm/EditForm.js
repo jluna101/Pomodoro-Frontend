@@ -1,7 +1,6 @@
-// Form.js
 import React, { useState } from "react";
 
-function CreateForm({ setCreateModalVisible }) {
+function EditForm({ setModalVisible }) {
 	const initialTask = {
 		name: "",
 		workLength: 0,
@@ -16,7 +15,7 @@ function CreateForm({ setCreateModalVisible }) {
 	function handleSubmit(event) {
 		event.preventDefault();
 		// need axios post request here, body is task state.
-		setCreateModalVisible(false);
+		setModalVisible(false);
 	}
 	return (
 		<div className="modal-container">
@@ -81,4 +80,4 @@ function CreateForm({ setCreateModalVisible }) {
 	);
 }
 
-export default CreateForm;
+export default EditForm;

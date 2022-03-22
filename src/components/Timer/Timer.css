@@ -1,0 +1,10 @@
+.timer-container {
+	grid-row: 1;
+	grid-column: 1 / span 2;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-evenly;
+	border: solid black;
+	border-width: 2px 2px 0 2px;
+}

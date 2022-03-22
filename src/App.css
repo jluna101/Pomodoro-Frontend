@@ -1,9 +1,19 @@
-.App {
+* {
 	box-sizing: border-box;
-	margin-top: 20px;
-	padding-top: 20px;
 }
 
 body {
-	margin: 20px;
+	height: 100vh;
+}
+
+#root {
+	height: 100vh;
+}
+
+.app-container {
+	display: grid;
+	grid-template-columns: 0.5fr 0.5fr;
+	grid-template-rows: 0.65fr 0.35fr;
+	height: 100%;
+	width: 100%;
 }

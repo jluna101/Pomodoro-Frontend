@@ -1,10 +1,12 @@
 // Metrics.js
 
-import React from 'react';
+import React from "react";
+import "./Metrics.css";
 
 function Metrics(props) {
 	return (
 		<div className="metrics-container">
+			<h3>Metrics Container</h3>
 			<div className="stats-container">
 				<ul>
 					<li className="individual-stat">Number of pomodoros completed: </li>
