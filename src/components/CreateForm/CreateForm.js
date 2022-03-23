@@ -16,37 +16,13 @@ function CreateForm({ setCreateModalVisible }) {
 		setTask({ ...task, [event.target.id]: event.target.value });
 	}
 	// original code 
-	// function handleSubmit(event) {
-	// 	event.preventDefault();
-	// 	// need axios post request here, body is task state.
-	// 	setCreateModalVisible(false);
-
-	// // attempt 2
-	// const handleSubmit = (event) => {
-	// 	event.preventDefault();
-	// 	axios.post('https://pomodor-api.herokuapp.com/poms', task);
-	// 	console.log(task);
-	// 	setCreateModalVisible(false);
-	// }
-
-	// attempt 3
-	// fetch(`https://pomodor-api.herokuapp.com/poms`, {
-	// method: 'POST',
-	// headers: {
-	// 	'Content-Type': 'application/json',
-	// },
-	// body: JSON.stringify(task),
-	// });
-
-	const handleSubmit = (event) => {
+	function handleSubmit(event) {
 		event.preventDefault();
-		axios.post('https://pomodor-api.herokuapp.com/poms', {
-			name
-		}).then(res => console.log('Posted task', res)).catch(err => console.log(err))
+		// need axios post request here, body is task state.
+		axios.post('https://pomodor-api.herokuapp.com/poms', task);
+		setCreateModalVisible(false);
 	}
 
-
-	}
 	return (
 		<div className='modal-container'>
 			<div className='task-form-container'>
