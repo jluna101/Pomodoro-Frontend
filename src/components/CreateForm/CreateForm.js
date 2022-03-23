@@ -15,7 +15,7 @@ function CreateForm({ setCreateModalVisible }) {
 	function handleChange(event) {
 		setTask({ ...task, [event.target.id]: event.target.value });
 	}
-	// original code 
+	// original code
 	function handleSubmit(event) {
 		event.preventDefault();
 		// need axios post request here, body is task state.
