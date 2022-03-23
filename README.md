@@ -1,70 +1,62 @@
-# Getting Started with Create React App
+# Pomodoro Group Project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Frontend Deployment:
+https://pomodoro176.netlify.app/
 
-## Available Scripts
+Backend Deployment:
+https://pomodor-api.herokuapp.com/poms
 
-In the project directory, you can run:
+Members:
+Jesse Luna - https://github.com/jluna101
+Justin Lee - https://github.com/jleee14
+Peter Young - https://github.com/pspyoung
+Brian Yoon - https://github.com/thinkaboutmovies
 
-### `npm start`
+### Overview
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+This is a Pomodoro App that helps optimize study and break times through the use of Pomodoro intervals. The structured work and break timer helps students stay on task. The schedule breaks helps increase productive for longer periods. Pomodoro interval data is accessed in the front end, and the data gets sent to the back end for statistics and analysis.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Example models and their properties
 
-### `npm test`
+```
+const UserSchema = new.mongoose.Schema ({
+   name: String,
+   lastLogin: Date,
+   NumOfPomsDone: Number
+});
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+const TaskSchema = new.mongoose.Schema ({
+   task: String,
+   workDuration: Number,
+   shortBreakDuration: Number,
+   numOfPomsTillBreak: Number,
+   longBreakDuration: Number
+});
+```
 
-### `npm run build`
+### User stories
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- I want to have a user-friendly Pomodoro App so I can stay focused and motivated.
+- I want to be able to set a study timer so I know how many minutes I need to study before I take a break.
+- I want to be able to pause the timer so I can resume my session later in case of interruptions.
+- I want to be able to see how much time left I have for my break and study session so I can better manage my time.
+- I want to be able to reset the timer on a study session so I can redo a study session if I forgot to pause the timer.
+- I want to be able to see how many study sessions I have completed in the past. This data can help me determine the limits of my productivity, and inform my decision for future pomodoro sessions.
+- I want to be able to categorize my pomodoro sessions so I know how much time I’m spending on each task.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Wireframes
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![Screen Shot 2022-03-21 at 8 11 01 PM](https://media.git.generalassemb.ly/user/41448/files/aa3c4180-a956-11ec-8c80-abef0f4d5d6b)
+![Screen Shot 2022-03-21 at 8 11 13 PM](https://media.git.generalassemb.ly/user/41448/files/b1634f80-a956-11ec-93aa-5c88dde19a25)
 
-### `npm run eject`
+<!-- #### Stretch Goals
+![Screen Shot 2022-03-21 at 8 11 26 PM](https://media.git.generalassemb.ly/user/41448/files/b1634f80-a956-11ec-92be-5a66f7848e1e)
+![Screen Shot 2022-03-21 at 8 11 40 PM](https://media.git.generalassemb.ly/user/41448/files/b1fbe600-a956-11ec-9fad-7fc5c0763555) -->
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Request and Response Diagram
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+![Express-API-diagram drawio](https://media.git.generalassemb.ly/user/41448/files/d0e88f80-a9cb-11ec-8a10-0503929c5cd4)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Component Hierarchy
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Coming soon!
