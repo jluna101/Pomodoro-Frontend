@@ -1,8 +1,8 @@
 // Timer.js
 
-import React from "react";
-import { useState, useEffect } from "react";
-import "./Timer.css";
+import React from 'react';
+import { useState, useEffect } from 'react';
+import './Timer.css';
 
 function Timer(props) {
 	// create function for timer
@@ -18,10 +18,11 @@ function Timer(props) {
 	const [timer, setTimer] = useState(30);
 
 	function pomTimer() {
+		let time = 30;
 		let timeInterval;
 		timeInterval = setInterval(pomTimer, 1000);
-		// time--;
-		console.log("Timer works");
+		time--;
+		console.log('Timer works');
 	}
 	// set initial state of the timer to be 10 * 1000
 	// timeinterval: state that is changed every second.
@@ -51,7 +52,7 @@ function Timer(props) {
 			{/* setTimer(useInterval)? */}
 			<div className="buttons-container">
 				<button className="timer-button" onClick={pomTimer}>
-					<i className="fa-solid fa-play" Time={timer} />
+					<i className="fa-solid fa-play" />
 				</button>
 				<button className="timer-button">
 					<i className="fa-solid fa-pause"></i>

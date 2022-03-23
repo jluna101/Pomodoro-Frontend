@@ -7,10 +7,11 @@ Backend Deployment:
 https://pomodor-api.herokuapp.com/poms
 
 Members:
-Jesse Luna - https://github.com/jluna101
-Justin Lee - https://github.com/jleee14
-Peter Young - https://github.com/pspyoung
-Brian Yoon - https://github.com/thinkaboutmovies
+
+- Jesse Luna - https://github.com/jluna101
+- Justin Lee - https://github.com/jleee14
+- Peter Young - https://github.com/pspyoung
+- Brian Yoon - https://github.com/thinkaboutmovies
 
 ### Overview
 
