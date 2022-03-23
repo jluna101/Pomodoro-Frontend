@@ -1,9 +1,9 @@
 import React from 'react';
 
-function Task({ setEditModalVisible }) {
+function Task({ setEditModalVisible, task }) {
 	return (
 		<li>
-			placeholder task
+			{task.name}
 			<button className="editButton" onClick={setEditModalVisible}>
 				Name
 				<i className="fa-solid fa-pen-to-square"></i>

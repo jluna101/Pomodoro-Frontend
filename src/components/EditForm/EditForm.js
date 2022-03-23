@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from 'axios';
 
 function EditForm({ setEditModalVisible }) {
 	const initialTask = {
@@ -8,11 +9,19 @@ function EditForm({ setEditModalVisible }) {
 		sessionsBreak: 0,
 		longBreak: 0,
 		// get request to pull in existing task data based on ID
+
+		// axios.get(`https://pomodor-api.herokuapp.com/poms/${task.name}`, task);
+		axios
+		.get('http://localhost:3111/icecreams')
+		.then((res) => setFlavors(res.data));
 	};
+
+
 	const [task, setTask] = useState(initialTask);
 	function handleChange(event) {
 		setTask({ ...task, [event.target.id]: event.target.value });
 	}
+
 	function handleSubmit(event) {
 		event.preventDefault();
 		// need axios put request here, body is task state.
