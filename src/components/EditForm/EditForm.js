@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 
-function EditForm({ setModalVisible }) {
+function EditForm({ setEditModalVisible }) {
 	const initialTask = {
 		name: "",
 		workLength: 0,
 		shortBreak: 0,
 		sessionsBreak: 0,
 		longBreak: 0,
+		// get request to pull in existing task data based on ID
 	};
 	const [task, setTask] = useState(initialTask);
 	function handleChange(event) {
@@ -14,9 +15,11 @@ function EditForm({ setModalVisible }) {
 	}
 	function handleSubmit(event) {
 		event.preventDefault();
-		// need axios post request here, body is task state.
-		setModalVisible(false);
+		// need axios put request here, body is task state.
+		setEditModalVisible(false);
 	}
+
+	function handleDeleteSubmit(event) {}
 	return (
 		<div className="modal-container">
 			<div className="task-form-container">

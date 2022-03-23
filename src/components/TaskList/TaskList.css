@@ -5,6 +5,8 @@
 	grid-column: 1;
 	position: relative;
 	border: 2px solid black;
+	height: 100%;
+	width: 100%;
 }
 
 #create-button {

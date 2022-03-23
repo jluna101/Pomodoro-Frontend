@@ -1,5 +1,6 @@
 // Form.js
 import React, { useState } from "react";
+import "./CreateForm.css";
 
 function CreateForm({ setCreateModalVisible }) {
 	const initialTask = {
@@ -22,6 +23,7 @@ function CreateForm({ setCreateModalVisible }) {
 		<div className="modal-container">
 			<div className="task-form-container">
 				<form className="task-create-form" onSubmit={handleSubmit}>
+					<h3>Create a task</h3>
 					<div className="task-parameter">
 						<label htmlFor="name">Name of task: </label>
 						<input

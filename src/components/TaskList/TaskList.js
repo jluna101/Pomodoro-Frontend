@@ -17,23 +17,22 @@ function TaskList(props) {
 	}
 	return (
 		<div className="tasklist-container">
-			<button id="create-button">
-				<i className="fa-solid fa-plus" onClick={createModalToggle}></i>
-			</button>
-			<h3>Task List</h3>
-			<div className="list-container">
-				<ul className="tasklist-list">
-					<li>Placeholder task</li>
-					{/* mapped data - from fetch request map to task */}
-					<Task setEditModalVisible={setEditModalVisible} />
-				</ul>
-			</div>
 			{createModalVisible && (
 				<CreateForm setCreateModalVisible={setCreateModalVisible} />
 			)}
 			{editModalVisible && (
 				<EditForm setEditModalVisible={setEditModalVisible} />
 			)}
+			<button id="create-button">
+				<i className="fa-solid fa-plus" onClick={createModalToggle}></i>
+			</button>
+			<h3>Task List</h3>
+			<div className="list-container">
+				<ul className="tasklist-list">
+					{/* mapped data - from fetch request map to task */}
+					<Task setEditModalVisible={setEditModalVisible} />
+				</ul>
+			</div>
 		</div>
 	);
 }
