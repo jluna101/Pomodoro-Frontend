@@ -60,11 +60,15 @@
 	}
 
 	input {
-		font-size: 0.85em;
+		font-size: 0.75em;
 	}
 
 	#create-button {
-		font-size: 10px;
+		margin-bottom: 10px;
+	}
+
+	.saveButton {
+		margin-top: 10px;
 	}
 }
 
