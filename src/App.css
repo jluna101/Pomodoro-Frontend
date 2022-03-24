@@ -57,17 +57,3 @@ body {
 		width: auto;
 	}
 }
-
-/* @media (max-width: 1024px) {
-	body {
-		background-color: rgb(155, 35, 22);
-	}
-	.app-container {
-		font-family: 'Inter', sans-serif;
-		display: grid;
-		grid-template-rows: 0.25fr 0.5fr 0.25fr;
-		grid-template-columns: 1fr;
-		max-height: 100vh;
-		width: auto;
-	}
-} */

@@ -3,10 +3,12 @@
 	grid-column: 2;
 	background-color: var(--dark);
 	color: var(--gray);
+	font-size: 1em;
 }
 
 .metricsHeader {
 	text-align: center;
+	font-size: 1.4em;
 }
 
 /* Mobile Media Query */
@@ -27,10 +29,13 @@
 	}
 }
 
+/* Tablet Media Query */
+
 @media (min-device-width: 480px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
 	.metrics-container {
 		grid-row: 3;
 		grid-column: 1 / span 2;
+		font-size: 1em;
 	}
 
 	.stats-container {
