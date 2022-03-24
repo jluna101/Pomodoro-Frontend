@@ -32,6 +32,7 @@ function Task({ setEditModalVisible, task, data, setSpecificTask, getPoms }) {
 			<button type='button' onClick={handleDeleteSubmit}>
 				X
 			</button>
+			<button onClick={bringTimer}>Add to timer</button>
 		</li>
 	);
 }
