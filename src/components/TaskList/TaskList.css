@@ -10,7 +10,7 @@
 	height: 100%;
 	width: 100%;
 	background-color: #2b2d42;
-	font-size: 16px;
+	font-size: 1em;
 	color: var(--gray);
 	font-weight: bolder;
 }
@@ -49,6 +49,7 @@
 		grid-row: 1;
 		grid-column: 1 / span 2;
 		border: 2px solid red;
+		font-size: 0.75em;
 	}
 	.tasklist-list {
 		display: grid;
@@ -79,6 +80,7 @@
 		grid-column: 1 / span 2;
 		/* background-color: darkolivegreen; */
 		border: 2px solid green;
+		font-size: 1em;
 	}
 	.tasklist-list {
 		display: grid;
