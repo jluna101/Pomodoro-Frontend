@@ -24,63 +24,65 @@ function CreateForm({ setCreateModalVisible }) {
 	}
 
 	return (
-		<div className='modal-container'>
-			<div className='task-form-container'>
-				<form className='task-create-form' onSubmit={handleSubmit}>
-					<h3>Create a task</h3>
-					<div className='task-parameter'>
-						<label htmlFor='name'>Name of task: </label>
+		<div className="modal-container">
+			<div className="task-form-container">
+				<form className="task-create-form" onSubmit={handleSubmit}>
+					<h3 className="createTaskHeader">Create a task</h3>
+					<div className="task-parameter">
+						<label htmlFor="name">Name of task: </label>
 						<input
-							type='text'
-							id='name'
+							type="text"
+							id="name"
 							value={task.name}
 							onChange={handleChange}
 							required
 						/>
 					</div>
-					<div className='task-parameter'>
-						<label htmlFor='workLength'>Length of work sessions:</label>
+					<div className="task-parameter">
+						<label htmlFor="workLength">Length of work sessions:</label>
 						<input
-							type='number'
-							id='workLength'
+							type="number"
+							id="workLength"
 							value={task.workLength}
 							onChange={handleChange}
 							required
 						/>
 					</div>
-					<div className='task-parameter'>
-						<label htmlFor='shortBreak'>Length of short breaks:</label>
+					<div className="task-parameter">
+						<label htmlFor="shortBreak">Length of short breaks:</label>
 						<input
-							type='number'
-							id='shortBreak'
+							type="number"
+							id="shortBreak"
 							value={task.shortBreak}
 							onChange={handleChange}
 							required
 						/>
 					</div>
-					<div className='task-parameter'>
-						<label htmlFor='longBreak'>Length of long breaks:</label>
+					<div className="task-parameter">
+						<label htmlFor="longBreak">Length of long breaks:</label>
 						<input
-							type='number'
-							id='longBreak'
+							type="number"
+							id="longBreak"
 							value={task.longBreak}
 							onChange={handleChange}
 							required
 						/>
 					</div>
-					<div className='task-parameter'>
-						<label htmlFor='sessionsBreak'>
+					<div className="task-parameter">
+						<label htmlFor="sessionsBreak">
 							Number of work sessions per long break:
 						</label>
 						<input
-							type='number'
-							id='sessionsBreak'
+							type="number"
+							id="sessionsBreak"
 							value={task.sessionsBreak}
 							onChange={handleChange}
 							required
 						/>
 					</div>
-					<button type='submit'>Save</button>
+					<button className="saveButton" type="submit">
+						<i className="fa-solid fa-check"></i>
+					</button>
 				</form>
 			</div>
 		</div>

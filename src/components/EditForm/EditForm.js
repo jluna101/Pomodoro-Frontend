@@ -10,10 +10,10 @@ function EditForm({ setEditModalVisible }) {
 		longBreak: 0,
 		// get request to pull in existing task data based on ID
 
-		// axios.get(`https://pomodor-api.herokuapp.com/poms/${task.name}`, task);
-		axios
-		.get('http://localhost:3111/icecreams')
-		.then((res) => setFlavors(res.data));
+		// axios.get(`https://pomodor-api.herokuapp.com/poms/${task.name}`, task)
+	// 	axios
+	// 	.get('http://localhost:3111/icecreams')
+	// 	.then((res) => setFlavors(res.data));
 	};
 
 

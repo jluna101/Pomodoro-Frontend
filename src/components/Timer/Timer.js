@@ -1,5 +1,3 @@
-// Timer.js
-
 import React from 'react';
 import { useState, useEffect, useRef } from 'react';
 import './Timer.css';
@@ -7,12 +5,19 @@ import './Timer.css';
 function Timer(props) {
 	// when timer reaches 0, stop timer
 	// render timer data on screen with useState
-
-	const [timer, setTimer] = useState(30);
+	let clockInterval;
+	const [startValue, setStartValue] = useState(5);
+	const [timer, setTimer] = useState(startValue);
 	const [isActive, setIsActive] = useState(false);
 
 	function toggleTimer() {
 		setIsActive(!isActive);
+	}
+
+	function resetTimer() {
+		clearInterval(clockInterval);
+		setTimer(startValue);
+		toggleTimer();
 	}
 
 	// function pomTimer() {
@@ -28,12 +33,17 @@ function Timer(props) {
 	// add event listeners to buttons that runs those functions
 
 	useEffect(() => {
-		let clockInterval;
 		if (isActive) {
-			clockInterval = setInterval(() => {
-				setTimer((timer) => timer - 1);
-			}, 1000);
+			if (timer > 0) {
+				clockInterval = setInterval(() => {
+					setTimer((timer) => timer - 1);
+				}, 1000);
+			} else {
+				toggleTimer();
+			}
 		} else if (!isActive && timer !== 0) {
+			clearInterval(clockInterval);
+		} else if (isActive && timer === 0) {
 			clearInterval(clockInterval);
 		}
 		return () => clearInterval(clockInterval);
@@ -41,26 +51,19 @@ function Timer(props) {
 
 	return (
 		<div className="timer-container">
-			<div className="clock-container">Timer: {timer}</div>
-			{/* use string interpolation/bracket notation to put time on the page */}
-			{/* setTimer(useInterval)? */}
+			<div className="clock-container">Time: {timer}</div>
+			
 			<div className="buttons-container">
-				{/* <button
-					className={`button button-primary button-primary-${
-						isActive ? 'active' : 'inactive'
-					}`}
-					onClick={toggle}>
-					{isActive ? 'Pause' : 'Start'}
-				</button> */}
+				
 				<button className="timer-button" onClick={toggleTimer}>
 					{isActive ? (
-						<i className="fa-solid fa-play" />
+						<i className="fa-solid fa-pause" />
 					) : (
-						<i className="fa-solid fa-pause"></i>
+						<i className="fa-solid fa-play" />
 					)}
 				</button>
 
-				<button className="timer-button">
+				<button className="timer-button" onClick={resetTimer}>
 					<i className="fa-solid fa-rotate-right"></i>
 				</button>
 			</div>

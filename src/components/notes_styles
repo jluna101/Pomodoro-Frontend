@@ -1,12 +1,54 @@
+Font Awesome Icons:
+
 // Play
-<i class="fa-solid fa-play"></i>
-
+<i className="fa-solid fa-play"></i>
 // Pause
-<i class="fa-solid fa-pause"></i>
-
+<i className="fa-solid fa-pause"></i>
 // Restart
-<i class="fa-solid fa-rotate-right"></i>
-
-
+<i className="fa-solid fa-rotate-right"></i>
 // Add
-<i class = "fa-solid fa-plus"></i>
+<i className = "fa-solid fa-plus"></i>
+// Check
+<i className="fa-solid fa-check"></i>
+
+// Font
+
+Inter Light 300
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300&family=Karla:wght@200&display=swap');
+</style>
+
+Color Palette:
+https://coolors.co/palette/2b2d42-8d99ae-edf2f4-ef233c-d90429
+Dark: #2B2D42
+Gray: #8D99AE
+Light: #EDF2F4
+Light Red: #EF233C
+Dark Red: D90429
+
+Background all:
+2B2D42
+
+Timer circle:
+8D99AE
+
+Time text:
+White or black
+root css selector
+
+Buttons:
+EF233C
+
+Text - all the same
+black or white:
+
+Task List buttons:
+
+Mobile Responsiveness:
+
+Task
+
+Timer
+
+Metrics
