@@ -40,12 +40,6 @@ function EditForm({ setEditModalVisible, data }) {
 		setEditModalVisible(false);
 	}
 
-	function handleDeleteSubmit(event) {
-		// axios delete task
-		axios.delete(`https://pomodor-api.herokuapp.com/poms/${data.name}`);
-		// console.log('hello');
-		setEditModalVisible(false);
-	}
 	return (
 		<div className='modal-container'>
 			<div className='task-form-container'>
@@ -116,13 +110,7 @@ function EditForm({ setEditModalVisible, data }) {
 						/>
 					</div>
 					<button type='submit'>Save</button>
-					{/* <button type='button'>Delete</button> */}
-					{/* <button onclick={handleDeleteSubmit}>Click me</button> */}
 				</form>
-				{/* <button type='button'>Delete</button> */}
-				<button type='button' onClick={handleDeleteSubmit}>
-					Delete
-				</button>
 			</div>
 		</div>
 	);
