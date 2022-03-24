@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import axios from 'axios';
+import './EditForm.css';
 
 function EditForm({ setEditModalVisible }) {
 	const initialTask = {
-		name: "",
+		name: '',
 		workLength: 0,
 		shortBreak: 0,
 		sessionsBreak: 0,
@@ -11,11 +12,10 @@ function EditForm({ setEditModalVisible }) {
 		// get request to pull in existing task data based on ID
 
 		// axios.get(`https://pomodor-api.herokuapp.com/poms/${task.name}`, task)
-	// 	axios
-	// 	.get('http://localhost:3111/icecreams')
-	// 	.then((res) => setFlavors(res.data));
+		// 	axios
+		// 	.get('http://localhost:3111/icecreams')
+		// 	.then((res) => setFlavors(res.data));
 	};
-
 
 	const [task, setTask] = useState(initialTask);
 	function handleChange(event) {
@@ -33,7 +33,7 @@ function EditForm({ setEditModalVisible }) {
 		<div className="modal-container">
 			<div className="task-form-container">
 				<form className="task-create-form" onSubmit={handleSubmit}>
-					<div className="task-parameter">
+					<div className="task-parameter task-form-header">
 						<label htmlFor="name">Name of task: </label>
 						<input
 							type="text"
@@ -85,7 +85,10 @@ function EditForm({ setEditModalVisible }) {
 							required
 						/>
 					</div>
-					<button type="submit">Save</button>
+
+					<button type="submit" className="saveButton">
+						<i className="fa-solid fa-check"></i>
+					</button>
 				</form>
 			</div>
 		</div>
