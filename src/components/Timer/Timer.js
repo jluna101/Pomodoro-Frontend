@@ -24,24 +24,21 @@ function Timer({ currentTimer, acceptChange, setAcceptChange }) {
 	}
 
 	function resetTimer() {
-		if (isBreak) {
+		if (!isBreak) {
 			clearInterval(clockInterval);
 			setTimer(currentTimer.workLength * 60);
 			setDisplayMinutes(currentTimer.workLength);
 			setDisplaySeconds(0);
-			setIsBreak(!isBreak);
-		} else if (!isBreak) {
+		} else if (isBreak) {
 			clearInterval(clockInterval);
 			setTimer(currentTimer.shortBreak * 60);
 			setDisplayMinutes(currentTimer.shortBreak);
 			setDisplaySeconds(0);
-			setIsBreak(!isBreak);
-		} else if (!isBreak && breaksCounter + 1 === currentTimer.sessionsBreak) {
+		} else if (isBreak && breaksCounter + 1 === currentTimer.sessionsBreak) {
 			clearInterval(clockInterval);
 			setTimer(currentTimer.longBreak * 60);
 			setDisplayMinutes(currentTimer.longBreak);
 			setDisplaySeconds(0);
-			setIsBreak(!isBreak);
 		}
 	}
 
@@ -62,15 +59,18 @@ function Timer({ currentTimer, acceptChange, setAcceptChange }) {
 					toggleTimer();
 					// reset break counter
 					setBreaksCounter(0);
+					setIsBreak(!isBreak);
 					resetTimer();
 				} else if (isBreak) {
 					// break is done, go back to work, reset Timer to regular interval
 					console.log("initiate work");
 					toggleTimer();
 					setBreaksCounter(breaksCounter + 1);
+					setIsBreak(!isBreak);
 					resetTimer();
 				} else {
 					// else: work is done,
+					setIsBreak(!isBreak);
 					console.log("initiate short break");
 
 					toggleTimer();
@@ -81,6 +81,7 @@ function Timer({ currentTimer, acceptChange, setAcceptChange }) {
 			console.log("I'm trying to change");
 			setBaseTimer(currentTimer);
 			setAcceptChange(false);
+			setBreaksCounter(0);
 		} else if (!isActive && timer !== 0) {
 			// pause logic
 			console.log("pause");
@@ -89,13 +90,6 @@ function Timer({ currentTimer, acceptChange, setAcceptChange }) {
 			// code to prevent breaking on render
 			console.log("do nothing!");
 		}
-		// else if (currentTimer && !isActive && timer !== 0) {
-		// 	// code to change timer;
-		// 	setBaseTimer(currentTimer);
-		// 	console.log("reset timer");
-		// } else {
-		// 	console.log("nothing");
-		// }
 		return () => {
 			clearInterval(clockInterval);
 		};

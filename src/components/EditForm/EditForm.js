@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from 'axios';
+import axios from "axios";
 
 function EditForm({ setEditModalVisible }) {
 	const initialTask = {
@@ -11,11 +11,10 @@ function EditForm({ setEditModalVisible }) {
 		// get request to pull in existing task data based on ID
 
 		// axios.get(`https://pomodor-api.herokuapp.com/poms/${task.name}`, task)
-	// 	axios
-	// 	.get('http://localhost:3111/icecreams')
-	// 	.then((res) => setFlavors(res.data));
+		// 	axios
+		// 	.get('http://localhost:3111/icecreams')
+		// 	.then((res) => setFlavors(res.data));
 	};
-
 
 	const [task, setTask] = useState(initialTask);
 	function handleChange(event) {
