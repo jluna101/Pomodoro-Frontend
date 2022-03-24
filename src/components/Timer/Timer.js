@@ -2,13 +2,12 @@ import React from "react";
 import { useState, useEffect, useRef } from "react";
 import "./Timer.css";
 
-function Timer(props) {
+function Timer({ currentTimer }) {
 	// when timer reaches 0, stop timer
 	// render timer data on screen with useState
 	let clockInterval;
-	const [startValue, setStartValue] = useState(1);
-	const [timer, setTimer] = useState(startValue * 60);
-	const [displayMinutes, setDisplayMinutes] = useState(startValue);
+	const [timer, setTimer] = useState(0);
+	const [displayMinutes, setDisplayMinutes] = useState(0);
 	const [displaySeconds, setDisplaySeconds] = useState(0);
 	const [isActive, setIsActive] = useState(false);
 
@@ -16,32 +15,26 @@ function Timer(props) {
 		setIsActive(!isActive);
 	}
 
+	function setBaseTimer() {
+		setTimer(currentTimer.workLength * 60);
+		setDisplayMinutes(currentTimer.workLength);
+		setDisplaySeconds(0);
+	}
+
 	function resetTimer() {
 		if (isActive) {
 			clearInterval(clockInterval);
-			setTimer(startValue * 60);
-			setDisplayMinutes(startValue);
+			setTimer(currentTimer.workLength * 60);
+			setDisplayMinutes(currentTimer.workLength);
 			setDisplaySeconds(0);
 			toggleTimer();
 		} else {
 			clearInterval(clockInterval);
-			setTimer(startValue * 60);
-			setDisplayMinutes(startValue);
+			setTimer(currentTimer.workLength * 60);
+			setDisplayMinutes(currentTimer.workLength);
 			setDisplaySeconds(0);
 		}
 	}
-
-	// function pomTimer() {
-	// 	setTimer((timer) => timer - 1);
-	// 	console.log('Timer works');
-	// }
-
-	// function startTimer() {
-	// 	clockInterval = setInterval(pomTimer, 1000);
-	// }
-
-	// create separate pause and reset functions
-	// add event listeners to buttons that runs those functions
 
 	useEffect(() => {
 		if (isActive) {
@@ -58,9 +51,13 @@ function Timer(props) {
 			clearInterval(clockInterval);
 		} else if (isActive && timer === 0) {
 			clearInterval(clockInterval);
+			console.log("option 1");
+		} else if (currentTimer) {
+			setBaseTimer();
+			console.log("option 2");
 		}
 		return () => clearInterval(clockInterval);
-	}, [isActive, timer]);
+	}, [isActive, timer, currentTimer]);
 
 	return (
 		<div className="timer-container">

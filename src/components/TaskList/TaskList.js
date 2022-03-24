@@ -1,13 +1,13 @@
 //TaskList.js
 
-import React, { useState, useEffect } from 'react';
-import CreateForm from '../CreateForm/CreateForm.js';
-import './TaskList.css';
-import Task from '../Task/Task.js';
-import EditForm from '../EditForm/EditForm.js';
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import CreateForm from "../CreateForm/CreateForm.js";
+import "./TaskList.css";
+import Task from "../Task/Task.js";
+import EditForm from "../EditForm/EditForm.js";
+import axios from "axios";
 
-function TaskList(props) {
+function TaskList({ setCurrentTimer }) {
 	const [createModalVisible, setCreateModalVisible] = useState(false);
 	const [editModalVisible, setEditModalVisible] = useState(false);
 	const [data, setData] = useState([]);
@@ -20,7 +20,7 @@ function TaskList(props) {
 	useEffect(async () => {
 		try {
 			const response = await axios
-				.get('https://pomodor-api.herokuapp.com/poms')
+				.get("https://pomodor-api.herokuapp.com/poms")
 				.then((response) => {
 					setData(response.data);
 				});
@@ -48,6 +48,7 @@ function TaskList(props) {
 								setEditModalVisible={setEditModalVisible}
 								key={task._id}
 								task={task}
+								setCurrentTimer={setCurrentTimer}
 							/>
 						);
 					})}
