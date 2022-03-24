@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-function EditForm({ setEditModalVisible, data }) {
+function EditForm({ setEditModalVisible, data, getPoms }) {
 	//
 	// let initialTask = {
 	// 	name: '',
@@ -19,8 +19,6 @@ function EditForm({ setEditModalVisible, data }) {
 				.get(`https://pomodor-api.herokuapp.com/poms/${task.name}`)
 				.then((response) => {
 					setTask(response.data);
-					console.log(response.data);
-					console.log(task);
 				});
 		} catch (error) {
 			console.log(error);
@@ -29,14 +27,16 @@ function EditForm({ setEditModalVisible, data }) {
 
 	function handleChange(event) {
 		setTask({ ...task, [event.target.id]: event.target.value });
-		console.log(task);
 	}
-
+	// PUT Route
 	function handleSubmit(event) {
-		// event.preventDefault();
-		// need axios put request here, body is task state.
-		// this delete request only works if you click delete button and dont type anything in the input
-		axios.put(`https://pomodor-api.herokuapp.com/poms/${data.name}`, task);
+		event.preventDefault();
+		axios.put(`https://pomodor-api.herokuapp.com/poms/${data.name}`, task)
+		.then((res) => {
+			if (res.status === 200){
+				getPoms();
+			}
+		})
 		setEditModalVisible(false);
 	}
 
@@ -45,9 +45,7 @@ function EditForm({ setEditModalVisible, data }) {
 			<div className='task-form-container'>
 				<form
 					className='task-create-form'
-					onSubmit={handleSubmit}
-					// onClick={handleDeleteSubmit}
-				>
+					onSubmit={handleSubmit}>
 					<div className='task-parameter'>
 						<label htmlFor='name'>Name of task: </label>
 						<input

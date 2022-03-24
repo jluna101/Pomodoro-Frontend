@@ -19,6 +19,10 @@ function TaskList(props) {
 		setEditModalVisible(true);
 	}
 	useEffect(async () => {
+	getPoms();
+	}, [editModalVisible]);
+
+	async function getPoms(){
 		try {
 			const response = await axios
 				.get('https://pomodor-api.herokuapp.com/poms')
@@ -28,14 +32,16 @@ function TaskList(props) {
 		} catch (error) {
 			console.log(error);
 		}
-	}, [editModalVisible]);
+	}
+
+
 	return (
 		<div className="tasklist-container">
 			{createModalVisible && (
-				<CreateForm setCreateModalVisible={setCreateModalVisible} />
+				<CreateForm setCreateModalVisible={setCreateModalVisible} getPoms={getPoms} />
 			)}
 			{editModalVisible && (
-				<EditForm setEditModalVisible={setEditModalVisible} data={specificTask} />
+				<EditForm setEditModalVisible={setEditModalVisible} data={specificTask} getPoms={getPoms}/>
 			)}
 			<button id="create-button">
 				<i className="fa-solid fa-plus" onClick={createModalToggle}></i>
@@ -51,6 +57,7 @@ function TaskList(props) {
 								task={task}
 								data={specificTask}
 								setSpecificTask={setSpecificTask}
+								getPoms={getPoms}
 							/>
 						);
 					})}

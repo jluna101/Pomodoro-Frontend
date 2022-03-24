@@ -2,18 +2,24 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './Task.css';
 
-function Task({ setEditModalVisible, task, data, setSpecificTask }) {
+function Task({ setEditModalVisible, task, data, setSpecificTask, getPoms }) {
 	// const [specificTask, setSpecificTask] = useState(data)
 
 	function combineModuleAndTask(event) {
 		setEditModalVisible(true);
 		setSpecificTask(task);
-		console.log('trying to open');
+		console.log(`opening form for ${task.name}`)
 	}
 // DELETE Route
 	function handleDeleteSubmit(event) {
-		axios.delete(`https://pomodor-api.herokuapp.com/poms/${task.name}`);
-		setEditModalVisible(false);
+		axios.delete(`https://pomodor-api.herokuapp.com/poms/${task.name}`)
+		.then((res) => {
+			console.log(res)
+			if (res.status === 204){
+				getPoms();
+			}
+		})
+		// setEditModalVisible(false);
 	}
 
 	return (
