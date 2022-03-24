@@ -71,9 +71,10 @@ function EditForm({ setEditModalVisible, data }) {
 						<input
 							type="number"
 							id="workLength"
-							value={task.workLength}
+							value={data.workLength}
 							onChange={handleChange}
 							required
+							min='0'
 						/>
 					</div>
 					<div className="task-parameter">
@@ -81,9 +82,10 @@ function EditForm({ setEditModalVisible, data }) {
 						<input
 							type="number"
 							id="shortBreak"
-							value={task.shortBreak}
+							value={data.shortBreak}
 							onChange={handleChange}
 							required
+							min='0'
 						/>
 					</div>
 					<div className="task-parameter">
@@ -91,9 +93,10 @@ function EditForm({ setEditModalVisible, data }) {
 						<input
 							type="number"
 							id="longBreak"
-							value={task.longBreak}
+							value={data.longBreak}
 							onChange={handleChange}
 							required
+							min='0'
 						/>
 					</div>
 					<div className="task-parameter">
@@ -103,9 +106,10 @@ function EditForm({ setEditModalVisible, data }) {
 						<input
 							type="number"
 							id="sessionsBreak"
-							value={task.sessionsBreak}
+							value={data.sessionsBreak}
 							onChange={handleChange}
 							required
+							min='0'
 						/>
 					</div>
 					<button type="submit">Save</button>
