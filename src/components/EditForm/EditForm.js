@@ -70,7 +70,7 @@ function EditForm({ setEditModalVisible, data }) {
 						<input
 							type='number'
 							id='workLength'
-							// value={data.workLength}
+							value={task.workLength}
 							placeholder={data.workLength}
 							onChange={handleChange}
 							required
@@ -82,7 +82,8 @@ function EditForm({ setEditModalVisible, data }) {
 						<input
 							type='number'
 							id='shortBreak'
-							value={data.shortBreak}
+							value={task.shortBreak}
+							placeholder={data.shortBreak}
 							onChange={handleChange}
 							required
 							min='0'
@@ -93,7 +94,8 @@ function EditForm({ setEditModalVisible, data }) {
 						<input
 							type='number'
 							id='longBreak'
-							value={data.longBreak}
+							value={task.longBreak}
+							placeholder={data.longBreak}
 							onChange={handleChange}
 							required
 							min='0'
@@ -106,7 +108,8 @@ function EditForm({ setEditModalVisible, data }) {
 						<input
 							type='number'
 							id='sessionsBreak'
-							value={data.sessionsBreak}
+							value={task.sessionsBreak}
+							placeholder={data.sessionsBreak}
 							onChange={handleChange}
 							required
 							min='0'
@@ -117,7 +120,9 @@ function EditForm({ setEditModalVisible, data }) {
 					{/* <button onclick={handleDeleteSubmit}>Click me</button> */}
 				</form>
 				{/* <button type='button'>Delete</button> */}
-				<button type='button' onClick={handleDeleteSubmit}>Delete</button>
+				<button type='button' onClick={handleDeleteSubmit}>
+					Delete
+				</button>
 			</div>
 		</div>
 	);
