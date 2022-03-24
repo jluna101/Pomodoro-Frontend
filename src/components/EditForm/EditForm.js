@@ -25,6 +25,16 @@ function EditForm({ setEditModalVisible, data, getPoms }) {
 		}
 	}, []);
 
+<<<<<<< HEAD
+=======
+		// axios.get(`https://pomodor-api.herokuapp.com/poms/${task.name}`, task)
+		// 	axios
+		// 	.get('http://localhost:3111/icecreams')
+		// 	.then((res) => setFlavors(res.data));
+	};
+
+	const [task, setTask] = useState(initialTask);
+>>>>>>> 2e6d171 (add bug fix to reset button functionality)
 	function handleChange(event) {
 		setTask({ ...task, [event.target.id]: event.target.value });
 	}
