@@ -1,13 +1,15 @@
-import React from 'react';
-import { useState, useEffect, useRef } from 'react';
-import './Timer.css';
+import React from "react";
+import { useState, useEffect, useRef } from "react";
+import "./Timer.css";
 
 function Timer(props) {
 	// when timer reaches 0, stop timer
 	// render timer data on screen with useState
 	let clockInterval;
-	const [startValue, setStartValue] = useState(5);
-	const [timer, setTimer] = useState(startValue);
+	const [startValue, setStartValue] = useState(1);
+	const [timer, setTimer] = useState(startValue * 60);
+	const [displayMinutes, setDisplayMinutes] = useState(startValue);
+	const [displaySeconds, setDisplaySeconds] = useState(0);
 	const [isActive, setIsActive] = useState(false);
 
 	function toggleTimer() {
@@ -15,9 +17,18 @@ function Timer(props) {
 	}
 
 	function resetTimer() {
-		clearInterval(clockInterval);
-		setTimer(startValue);
-		toggleTimer();
+		if (isActive) {
+			clearInterval(clockInterval);
+			setTimer(startValue * 60);
+			setDisplayMinutes(startValue);
+			setDisplaySeconds(0);
+			toggleTimer();
+		} else {
+			clearInterval(clockInterval);
+			setTimer(startValue * 60);
+			setDisplayMinutes(startValue);
+			setDisplaySeconds(0);
+		}
 	}
 
 	// function pomTimer() {
@@ -37,7 +48,9 @@ function Timer(props) {
 			if (timer > 0) {
 				clockInterval = setInterval(() => {
 					setTimer((timer) => timer - 1);
-				}, 1000);
+				}, 200);
+				setDisplayMinutes(Math.floor(timer / 60));
+				setDisplaySeconds(timer % 60);
 			} else {
 				toggleTimer();
 			}
@@ -51,10 +64,11 @@ function Timer(props) {
 
 	return (
 		<div className="timer-container">
-			<div className="clock-container">Time: {timer}</div>
-			
+			<div className="clock-container">
+				Time: {displayMinutes}m {displaySeconds}s
+			</div>
+
 			<div className="buttons-container">
-				
 				<button className="timer-button" onClick={toggleTimer}>
 					{isActive ? (
 						<i className="fa-solid fa-pause" />
