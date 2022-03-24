@@ -23,7 +23,7 @@
 	color: var(--dark);
 }
 
-.timer-button {
+.timer-buttons {
 	display: inline-block;
 	width: auto;
 	height: auto;
@@ -36,10 +36,11 @@
 	padding: 10px;
 }
 
-@media (max-width: 800px) {
+/* Mobile Media Query */
+
+@media (max-width: 480px) {
 	.timer-container {
 		grid-row: 2;
-		/* background-color: darkolivegreen; */
 	}
 
 	.clock-container {
@@ -49,5 +50,21 @@
 	}
 	.timer-button {
 		font-size: 0.25em;
+	}
+}
+
+/* Tablet Media Query */
+@media (min-device-width: 480px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
+	.timer-container {
+		grid-row: 2;
+	}
+
+	.clock-container {
+		height: 6em;
+		width: 6em;
+		font-size: 1.5em;
+	}
+	.timer-button {
+		font-size: 0.5em;
 	}
 }

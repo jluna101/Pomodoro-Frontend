@@ -69,7 +69,7 @@ function Timer(props) {
 			</div>
 
 			<div className="buttons-container">
-				<button className="timer-button" onClick={toggleTimer}>
+				<button className="timer-buttons" onClick={toggleTimer}>
 					{isActive ? (
 						<i className="fa-solid fa-pause" />
 					) : (
@@ -77,7 +77,7 @@ function Timer(props) {
 					)}
 				</button>
 
-				<button className="timer-button" onClick={resetTimer}>
+				<button className="timer-buttons" onClick={resetTimer}>
 					<i className="fa-solid fa-rotate-right"></i>
 				</button>
 			</div>

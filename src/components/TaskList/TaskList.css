@@ -42,16 +42,51 @@
 	margin-top: -2%;
 	font-size: 1.4em;
 }
-@media (max-width: 800px) {
+
+/* Media Query Phone */
+@media (max-width: 480px) {
 	.tasklist-container {
 		grid-row: 1;
 		grid-column: 1 / span 2;
-		/* background-color: darkolivegreen; */
 		border: 2px solid red;
 	}
 	.tasklist-list {
 		display: grid;
 		grid-template-columns: 1fr 1fr;
+	}
+
+	.task-form-container {
+		background-color: var(--light);
+	}
+
+	input {
+		font-size: 0.85em;
+	}
+
+	#create-button {
+		font-size: 10px;
+	}
+}
+
+/* Media Query Tablet */
+@media (min-device-width: 480px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
+	.tasklist-container {
+		grid-row: 1;
+		grid-column: 1 / span 2;
+		/* background-color: darkolivegreen; */
+		border: 2px solid green;
+	}
+	.tasklist-list {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+	}
+
+	.task-form-container {
+		background-color: var(--light);
+	}
+
+	input {
+		font-size: 0.85em;
 	}
 
 	#create-button {

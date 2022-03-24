@@ -24,7 +24,7 @@ function CreateForm({ setCreateModalVisible }) {
 	}
 
 	return (
-		<div className="modal-container">
+		<div className="modal-container create-form-modal">
 			<div className="task-form-container">
 				<form className="task-create-form" onSubmit={handleSubmit}>
 					<h3 className="createTaskHeader">Create a task</h3>
