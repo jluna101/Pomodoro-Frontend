@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import "./Task.css";
 
-function Task({ setEditModalVisible, task, setCurrentTimer }) {
+function Task({ setEditModalVisible, task, setCurrentTimer, setAcceptChange }) {
 	function bringTimer(event) {
 		setCurrentTimer(task);
+		setAcceptChange(true);
 	}
 	return (
 		<li className="taskList">
