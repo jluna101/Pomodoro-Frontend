@@ -6,16 +6,13 @@
 }
 
 .editButton {
-	margin-left: 20px;
-
-	/* position: absolute;
-	left: 80%;
-	/* top: 5%; */
-	/* font-size: 14px;
+	width: auto;
+	height: auto;
+	font-size: 0.75em;
 	border: none;
-	border-radius: 2px;
-	margin: 2px;
+	margin-right: 2%;
+	border-radius: 50%;
 	background-color: var(--lightRed);
 	color: var(--light);
-	padding: 10px; */
+	padding: 5px;
 }
