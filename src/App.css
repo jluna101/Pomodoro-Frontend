@@ -23,7 +23,7 @@ body {
 
 .app-container {
 	font-family: 'Inter', sans-serif;
-	font-family: 'Karla', sans-serif;
+	/* font-family: 'Karla', sans-serif; */
 	display: grid;
 	grid-template-columns: 0.5fr 0.5fr;
 	grid-template-rows: 0.65fr 0.35fr;
@@ -36,6 +36,18 @@ body {
 /* Mobile: */
 
 @media (max-width: 800px) {
+	body {
+		background-color: darkolivegreen;
+	}
+	.app-container {
+		font-family: 'Inter', sans-serif;
+		display: grid;
+		grid-template-rows: 0.25fr 0.5fr 0.25fr;
+		grid-template-columns: 1fr;
+		max-height: 100vh;
+		width: auto;
+		/* background-color: darkolivegreen; */
+	}
 }
 
 /* Tablet */

@@ -8,3 +8,19 @@
 .metricsHeader {
 	text-align: center;
 }
+
+@media (max-width: 800px) {
+	.metrics-container {
+		grid-row: 3;
+		/* background-color: darkolivegreen; */
+		grid-column: 1 / span 2;
+	}
+
+	.stats-container {
+		display: grid;
+		grid-template-columns: 0.25fr 0.5fr 0.25fr;
+	}
+	.stats-ul-container {
+		grid-column: 2 / span 2;
+	}
+}
