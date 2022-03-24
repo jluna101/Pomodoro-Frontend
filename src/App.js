@@ -9,11 +9,18 @@ import React, { useState, useEffect } from "react";
 
 function App() {
 	const [currentTimer, setCurrentTimer] = useState(null);
-
+	const [acceptChange, setAcceptChange] = useState(false);
 	return (
 		<div className="app-container">
-			<Timer currentTimer={currentTimer} />
-			<TaskList setCurrentTimer={setCurrentTimer} />
+			<Timer
+				currentTimer={currentTimer}
+				acceptChange={acceptChange}
+				setAcceptChange={setAcceptChange}
+			/>
+			<TaskList
+				setCurrentTimer={setCurrentTimer}
+				setAcceptChange={setAcceptChange}
+			/>
 			<Metrics />
 		</div>
 	);

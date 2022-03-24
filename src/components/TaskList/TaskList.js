@@ -7,7 +7,7 @@ import Task from "../Task/Task.js";
 import EditForm from "../EditForm/EditForm.js";
 import axios from "axios";
 
-function TaskList({ setCurrentTimer }) {
+function TaskList({ setCurrentTimer, setAcceptChange }) {
 	const [createModalVisible, setCreateModalVisible] = useState(false);
 	const [editModalVisible, setEditModalVisible] = useState(false);
 	const [data, setData] = useState([]);
@@ -58,6 +58,8 @@ function TaskList({ setCurrentTimer }) {
 								data={specificTask}
 								setSpecificTask={setSpecificTask}
 								getPoms={getPoms}
+								setCurrentTimer={setCurrentTimer}
+								setAcceptChange={setAcceptChange}
 							/>
 						);
 					})}
