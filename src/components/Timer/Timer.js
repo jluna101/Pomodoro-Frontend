@@ -1,6 +1,6 @@
-import React from "react";
-import { useState, useEffect, useRef } from "react";
-import "./Timer.css";
+import React from 'react';
+import { useState, useEffect, useRef } from 'react';
+import './Timer.css';
 
 function Timer(props) {
 	// when timer reaches 0, stop timer
@@ -65,7 +65,7 @@ function Timer(props) {
 	return (
 		<div className="timer-container">
 			<div className="clock-container">
-				Time: {displayMinutes}m {displaySeconds}s
+				{displayMinutes}m {displaySeconds}s
 			</div>
 
 			<div className="buttons-container">

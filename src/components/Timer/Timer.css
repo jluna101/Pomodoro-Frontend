@@ -35,3 +35,19 @@
 	color: var(--light);
 	padding: 10px;
 }
+
+@media (max-width: 800px) {
+	.timer-container {
+		grid-row: 2;
+		/* background-color: darkolivegreen; */
+	}
+
+	.clock-container {
+		height: 4em;
+		width: 4em;
+		font-size: 1em;
+	}
+	.timer-button {
+		font-size: 0.25em;
+	}
+}

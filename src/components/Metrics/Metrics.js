@@ -8,7 +8,7 @@ function Metrics(props) {
 		<div className="metrics-container">
 			<h2 className="metricsHeader">Metrics Container</h2>
 			<div className="stats-container">
-				<ul>
+				<ul className="stats-ul-container">
 					<li className="individual-stat">Number of pomodoros completed: </li>
 					<li className="individual-stat">Average number of pomodoros:</li>
 					<li className="individual-stat">Number of sessions until break: </li>
