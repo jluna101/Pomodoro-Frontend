@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from 'axios';
 
-function EditForm({ setEditModalVisible }) {
-	const initialTask = {
-		name: "",
+function EditForm({ setEditModalVisible, data }) {
+	
+
+	
+	let initialTask = {
+		name: '',
 		workLength: 0,
 		shortBreak: 0,
 		sessionsBreak: 0,
@@ -16,15 +19,34 @@ function EditForm({ setEditModalVisible }) {
 	// 	.then((res) => setFlavors(res.data));
 	};
 
-
 	const [task, setTask] = useState(initialTask);
+
+	useEffect(async () => {
+		try {
+			const response = await axios
+				.get(`https://pomodor-api.herokuapp.com/poms/${task.name}`)
+				.then((response) => {
+					setTask(response.data);
+					console.log(response.data)
+					console.log(task)
+				});
+		} catch (error) {
+			console.log(error);
+		}
+	}, []);
+
+
+
+
 	function handleChange(event) {
 		setTask({ ...task, [event.target.id]: event.target.value });
+		console.log(task)
 	}
 
 	function handleSubmit(event) {
-		event.preventDefault();
+		// event.preventDefault();
 		// need axios put request here, body is task state.
+		axios.put(`https://pomodor-api.herokuapp.com/poms/${data.name}`, task);
 		setEditModalVisible(false);
 	}
 
@@ -38,6 +60,7 @@ function EditForm({ setEditModalVisible }) {
 						<input
 							type="text"
 							id="name"
+							placeholder={data.name}
 							value={task.name}
 							onChange={handleChange}
 							required

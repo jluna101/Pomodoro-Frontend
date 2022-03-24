@@ -11,6 +11,7 @@ function TaskList(props) {
 	const [createModalVisible, setCreateModalVisible] = useState(false);
 	const [editModalVisible, setEditModalVisible] = useState(false);
 	const [data, setData] = useState([]);
+	const [specificTask, setSpecificTask] = useState('hello');
 	function createModalToggle(event) {
 		setCreateModalVisible(true);
 	}
@@ -27,14 +28,14 @@ function TaskList(props) {
 		} catch (error) {
 			console.log(error);
 		}
-	}, []);
+	}, [editModalVisible]);
 	return (
 		<div className="tasklist-container">
 			{createModalVisible && (
 				<CreateForm setCreateModalVisible={setCreateModalVisible} />
 			)}
 			{editModalVisible && (
-				<EditForm setEditModalVisible={setEditModalVisible} />
+				<EditForm setEditModalVisible={setEditModalVisible} data={specificTask} />
 			)}
 			<button id="create-button">
 				<i className="fa-solid fa-plus" onClick={createModalToggle}></i>
@@ -48,6 +49,8 @@ function TaskList(props) {
 								setEditModalVisible={setEditModalVisible}
 								key={task._id}
 								task={task}
+								data={specificTask}
+								setSpecificTask={setSpecificTask}
 							/>
 						);
 					})}
