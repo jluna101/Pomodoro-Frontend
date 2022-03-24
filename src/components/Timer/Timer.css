@@ -7,4 +7,28 @@
 	justify-content: space-evenly;
 	border: solid black;
 	border-width: 2px 2px 0 2px;
+	font-size: 4em;
+	font-weight: bold;
+}
+
+.clock-container {
+	margin-top: 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 300px;
+	width: 300px;
+	border-radius: 50%;
+	background-color: var(--gray);
+	color: var(--dark);
+}
+
+.timer-button {
+	font-size: 36px;
+	margin: 15px;
+	border: none;
+	border-radius: 50%;
+	background-color: var(--lightRed);
+	color: var(--light);
+	padding: 10px;
 }

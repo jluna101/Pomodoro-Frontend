@@ -1,0 +1,10 @@
+.taskList {
+	box-sizing: border-box;
+	min-width: 50%;
+	padding-left: 2%;
+    
+}
+
+.editButton {
+	margin-left: 20px;
+}

@@ -14,5 +14,24 @@
 	left: 50%;
 	transform: translate(-50%, -50%);
 	background-color: white;
+	color: var(--dark);
+	font-size: 0.75em;
 	border-radius: 10px;
+	padding-left: 4%;
+	padding-top: 3%;
+}
+
+h3 {
+	text-align: center;
+}
+
+.saveButton {
+	font-size: 10px;
+	margin-top: 3%;
+	/* margin: 15px; */
+	border: none;
+	border-radius: 50%;
+	background-color: var(--lightRed);
+	color: var(--light);
+	padding: 10px;
 }

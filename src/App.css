@@ -1,9 +1,20 @@
+:root {
+	--dark: #2b2d42;
+	--gray: #8d99ae;
+	--light: #edf2f4;
+	--lightRed: #ef233c;
+	--darkRed: #d90429;
+}
+
 * {
 	box-sizing: border-box;
 }
 
 body {
 	height: 100vh;
+	background-color: var(--dark);
+	font-weight: bold;
+	color: white;
 }
 
 #root {
@@ -11,6 +22,8 @@ body {
 }
 
 .app-container {
+	font-family: 'Inter', sans-serif;
+	font-family: 'Karla', sans-serif;
 	display: grid;
 	grid-template-columns: 0.5fr 0.5fr;
 	grid-template-rows: 0.65fr 0.35fr;

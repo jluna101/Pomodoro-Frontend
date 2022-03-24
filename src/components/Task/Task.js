@@ -1,11 +1,11 @@
 import React from 'react';
+import './Task.css';
 
 function Task({ setEditModalVisible, task }) {
 	return (
-		<li>
+		<li className="taskList">
 			{task.name}
 			<button className="editButton" onClick={setEditModalVisible}>
-				Name
 				<i className="fa-solid fa-pen-to-square"></i>
 			</button>
 		</li>
