@@ -30,3 +30,14 @@ body {
 	height: 100%;
 	width: 100%;
 }
+
+/* Media Queries */
+
+/* Mobile: */
+
+@media (max-width: 800px) {
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+}
