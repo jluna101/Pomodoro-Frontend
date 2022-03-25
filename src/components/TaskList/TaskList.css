@@ -60,6 +60,8 @@
 
 	.task-form-container {
 		background-color: var(--light);
+		height: 80%;
+		padding: 4%;
 	}
 
 	input {
@@ -75,6 +77,10 @@
 
 	.saveButton {
 		margin-top: 10px;
+	}
+
+	.createTaskHeader {
+		padding-bottom: 3%;
 	}
 }
 
@@ -94,6 +100,9 @@
 
 	.task-form-container {
 		background-color: var(--light);
+		margin-top: 2%;
+		padding: 4%;
+		font-size: 0.85em;
 	}
 
 	input {
@@ -102,8 +111,14 @@
 
 	#create-button {
 		font-size: 10px;
+		margin-left: 8%;
 	}
 	.listHeader {
 		margin: 0;
+		padding: 2%;
+	}
+
+	.createTaskHeader {
+		margin-top: 1%;
 	}
 }
