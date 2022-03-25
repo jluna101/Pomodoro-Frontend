@@ -20,12 +20,8 @@
 		font-size: 0.75em;
 	}
 
-	.stats-container {
-		display: grid;
-		grid-template-columns: 0.25fr 0.5fr 0.25fr;
-	}
 	.stats-ul-container {
-		grid-column: 2 / span 2;
+		text-align: center;
 	}
 }
 
@@ -38,11 +34,7 @@
 		font-size: 1em;
 	}
 
-	.stats-container {
-		display: grid;
-		grid-template-columns: 0.25fr 0.5fr 0.25fr;
-	}
 	.stats-ul-container {
-		grid-column: 2 / span 2;
+		text-align: center;
 	}
 }
