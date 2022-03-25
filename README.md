@@ -17,22 +17,32 @@ Members:
 
 This is a Pomodoro App that helps optimize study and break times through the use of Pomodoro intervals. The structured work and break timer helps students stay on task. The schedule breaks helps increase productive for longer periods. Pomodoro interval data is accessed in the front end, and the data gets sent to the back end for statistics and analysis.
 
-### Example models and their properties
+### Sample Timer Code Snippet
 
 ```
-const UserSchema = new.mongoose.Schema ({
-   name: String,
-   lastLogin: Date,
-   NumOfPomsDone: Number
-});
+function setBaseTimer(currentTimer) {
+		setTimer(currentTimer.workLength * 60);
+		setDisplayMinutes(currentTimer.workLength);
+		setDisplaySeconds(0);
+	}
 
-const TaskSchema = new.mongoose.Schema ({
-   task: String,
-   workDuration: Number,
-   shortBreakDuration: Number,
-   numOfPomsTillBreak: Number,
-   longBreakDuration: Number
-});
+	function resetTimer() {
+		if (isBreak) {
+			clearInterval(clockInterval);
+			setTimer(currentTimer.workLength * 60);
+			setDisplayMinutes(currentTimer.workLength);
+			setDisplaySeconds(0);
+		} else if (!isBreak) {
+			clearInterval(clockInterval);
+			setTimer(currentTimer.shortBreak * 60);
+			setDisplayMinutes(currentTimer.shortBreak);
+			setDisplaySeconds(0);
+		} else if (!isBreak && breaksCounter + 1 === currentTimer.sessionsBreak) {
+			clearInterval(clockInterval);
+			setTimer(currentTimer.longBreak * 60);
+			setDisplayMinutes(currentTimer.longBreak);
+			setDisplaySeconds(0);
+		}
 ```
 
 ### User stories
@@ -42,8 +52,8 @@ const TaskSchema = new.mongoose.Schema ({
 - I want to be able to pause the timer so I can resume my session later in case of interruptions.
 - I want to be able to see how much time left I have for my break and study session so I can better manage my time.
 - I want to be able to reset the timer on a study session so I can redo a study session if I forgot to pause the timer.
-- I want to be able to see how many study sessions I have completed in the past. This data can help me determine the limits of my productivity, and inform my decision for future pomodoro sessions.
-- I want to be able to categorize my pomodoro sessions so I know how much time I’m spending on each task.
+- I want to be able to see how many study sessions I have completed in the past. This data can help me determine the limits of my productivity, and inform my decision for future Pomodoro sessions.
+- I want to be able to categorize my Pomodoro sessions so I know how much time I’m spending on each task.
 
 ### Wireframes
 
