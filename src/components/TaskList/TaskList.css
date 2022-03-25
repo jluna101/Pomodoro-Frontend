@@ -1,22 +1,20 @@
-/* take out auto padding and margin for h3 - use flex. */
-
 .tasklist-container {
+	box-sizing: border-box;
 	grid-row: 2;
 	grid-column: 1;
 	position: relative;
-	border: 2px dotted white;
+	border: 2px solid black;
 	height: 100%;
 	width: 100%;
-	background-color: #2b2d42;
-	font-size: 16px;
+	background-color: var(--dark);
+	font-size: 1em;
 	color: var(--gray);
 	font-weight: bolder;
 }
 
 #create-button {
 	position: absolute;
-	left: 80%;
-	/* top: 5%; */
+	left: 85%;
 	font-size: 14px;
 	margin: 15px;
 	border: none;
@@ -24,8 +22,108 @@
 	background-color: var(--lightRed);
 	color: var(--light);
 	padding: 10px;
+	width: 35px;
+	height: 35px;
 }
 
 .listHeader {
 	text-align: center;
+}
+
+.createTaskHeader {
+	margin-top: -2%;
+	font-size: 1.4em;
+}
+
+.task-form-container {
+	background-color: var(--light);
+	height: 80%;
+	padding: 4%;
+	font-size: 1.2em;
+	height: 50%;
+}
+
+.saveButton {
+	margin-top: 2%;
+}
+
+/* Media Query Phone */
+@media (max-width: 480px) {
+	.tasklist-container {
+		grid-row: 1;
+		grid-column: 1 / span 2;
+		font-size: 0.75em;
+		border: 2px solid black;
+		border-bottom: none;
+	}
+	.tasklist-list {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+	}
+
+	.task-form-container {
+		background-color: var(--light);
+		height: 80%;
+		padding: 4%;
+	}
+
+	input {
+		font-size: 0.75em;
+	}
+
+	#create-button {
+		margin-bottom: 10px;
+		width: 25px;
+		height: 25px;
+		padding: 0;
+	}
+
+	.saveButton {
+		margin-top: 10px;
+	}
+
+	.createTaskHeader {
+		padding-bottom: 3%;
+	}
+}
+
+/* Media Query Tablet */
+@media (min-device-width: 480px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
+	.tasklist-container {
+		grid-row: 1;
+		grid-column: 1 / span 2;
+		border: 2px solid black;
+		border-bottom: none;
+		font-size: 1em;
+		padding-left: 2%;
+		padding-right: 2%;
+	}
+	.tasklist-list {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+	}
+
+	.task-form-container {
+		background-color: var(--light);
+		margin-top: 2%;
+		padding: 4%;
+		font-size: 0.85em;
+	}
+
+	input {
+		font-size: 0.85em;
+	}
+
+	#create-button {
+		font-size: 10px;
+		margin-left: 6%;
+	}
+	.listHeader {
+		margin: 0;
+		padding: 2%;
+	}
+
+	.createTaskHeader {
+		margin-top: 1%;
+	}
 }

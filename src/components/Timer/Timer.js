@@ -2,60 +2,132 @@ import React from 'react';
 import { useState, useEffect, useRef } from 'react';
 import './Timer.css';
 
-function Timer(props) {
-	// when timer reaches 0, stop timer
-	// render timer data on screen with useState
+function Timer({
+	currentTimer,
+	acceptChange,
+	setAcceptChange,
+	pomsComplete,
+	setPomsComplete,
+	setBreaksCounter,
+	breaksCounter,
+}) {
 	let clockInterval;
-	const [startValue, setStartValue] = useState(5);
-	const [timer, setTimer] = useState(startValue);
+	const [timer, setTimer] = useState(0);
+	const [displayMinutes, setDisplayMinutes] = useState(0);
+	const [displaySeconds, setDisplaySeconds] = useState(0);
 	const [isActive, setIsActive] = useState(false);
+	const [isBreak, setIsBreak] = useState(false);
 
 	function toggleTimer() {
-		setIsActive(!isActive);
+		if (currentTimer) {
+			setIsActive(!isActive);
+		}
+	}
+
+	function setBaseTimer(currentTimer) {
+		setTimer(currentTimer.workLength * 60);
+		setDisplayMinutes(currentTimer.workLength);
+		setDisplaySeconds(0);
 	}
 
 	function resetTimer() {
-		clearInterval(clockInterval);
-		setTimer(startValue);
-		toggleTimer();
+		if (isBreak) {
+			clearInterval(clockInterval);
+			setTimer(currentTimer.workLength * 60);
+			setDisplayMinutes(currentTimer.workLength);
+			setDisplaySeconds(0);
+			setIsBreak(!isBreak);
+		} else if (!isBreak && breaksCounter + 1 === currentTimer.sessionsBreak) {
+			clearInterval(clockInterval);
+			setTimer(currentTimer.longBreak * 60);
+			setDisplayMinutes(currentTimer.longBreak);
+			setDisplaySeconds(0);
+			setBreaksCounter(0);
+		} else if (!isBreak) {
+			clearInterval(clockInterval);
+			setTimer(currentTimer.shortBreak * 60);
+			setDisplayMinutes(currentTimer.shortBreak);
+			setDisplaySeconds(0);
+			setBreaksCounter(breaksCounter + 1);
+		}
 	}
 
-	// function pomTimer() {
-	// 	setTimer((timer) => timer - 1);
-	// 	console.log('Timer works');
-	// }
-
-	// function startTimer() {
-	// 	clockInterval = setInterval(pomTimer, 1000);
-	// }
-
-	// create separate pause and reset functions
-	// add event listeners to buttons that runs those functions
-
+	function resetButton(event) {
+		if (!isBreak) {
+			clearInterval(clockInterval);
+			setTimer(currentTimer.workLength * 60);
+			setDisplayMinutes(currentTimer.workLength);
+			setDisplaySeconds(0);
+		} else if (isBreak && breaksCounter === 0) {
+			clearInterval(clockInterval);
+			setTimer(currentTimer.longBreak * 60);
+			setDisplayMinutes(currentTimer.longBreak);
+			setDisplaySeconds(0);
+		} else if (isBreak) {
+			clearInterval(clockInterval);
+			setTimer(currentTimer.shortBreak * 60);
+			setDisplayMinutes(currentTimer.shortBreak);
+			setDisplaySeconds(0);
+		}
+	}
 	useEffect(() => {
 		if (isActive) {
-			if (timer > 0) {
+			if (timer > -1) {
 				clockInterval = setInterval(() => {
 					setTimer((timer) => timer - 1);
-				}, 1000);
-			} else {
-				toggleTimer();
+				}, 100);
+				setDisplayMinutes(Math.floor(timer / 60));
+				setDisplaySeconds(timer % 60);
+			} else if (timer < 1) {
+				// when the timer hits 0, initiate break logic below
+				if (breaksCounter + 1 === currentTimer.sessionsBreak && !isBreak) {
+					// hit long break, clear breaks to 0, activateLongBreakTimer
+					toggleTimer();
+					setPomsComplete(pomsComplete + 1);
+					setIsBreak(!isBreak);
+					resetTimer();
+				} else if (isBreak) {
+					// break is done, go back to work, reset Timer to regular interval
+					toggleTimer();
+					setIsBreak(!isBreak);
+					resetTimer();
+				} else {
+					// else: work interval is done.
+					setIsBreak(!isBreak);
+					setPomsComplete(pomsComplete + 1);
+					toggleTimer();
+					resetTimer();
+				}
 			}
+		} else if (acceptChange && !isActive) {
+			setBaseTimer(currentTimer);
+			setAcceptChange(false);
+			setBreaksCounter(0);
 		} else if (!isActive && timer !== 0) {
+			// pause logic
 			clearInterval(clockInterval);
-		} else if (isActive && timer === 0) {
-			clearInterval(clockInterval);
+		} else if (!currentTimer && timer === 0) {
+			return;
+		} else {
+			// code to prevent breaking on render
+			console.log('do nothing!');
 		}
-		return () => clearInterval(clockInterval);
-	}, [isActive, timer]);
+		return () => {
+			clearInterval(clockInterval);
+		};
+	}, [isActive, timer, currentTimer]);
 
 	return (
 		<div className="timer-container">
-			<div className="clock-container">Time: {timer}</div>
-			
+			<div className="clock-container">
+				<div className="message-container">{isBreak ? 'Break' : 'Work'}</div>
+				<div className="time-container">
+					{displayMinutes}m {displaySeconds}s
+				</div>
+			</div>
+
 			<div className="buttons-container">
-				
-				<button className="timer-button" onClick={toggleTimer}>
+				<button className="timer-buttons" onClick={toggleTimer}>
 					{isActive ? (
 						<i className="fa-solid fa-pause" />
 					) : (
@@ -63,7 +135,7 @@ function Timer(props) {
 					)}
 				</button>
 
-				<button className="timer-button" onClick={resetTimer}>
+				<button className="timer-buttons" onClick={resetButton}>
 					<i className="fa-solid fa-rotate-right"></i>
 				</button>
 			</div>

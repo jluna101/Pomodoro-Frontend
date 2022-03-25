@@ -1,13 +1,49 @@
-import React from 'react';
-import './Task.css';
+import React, { useState } from "react";
+import axios from "axios";
+import "./Task.css";
 
-function Task({ setEditModalVisible, task }) {
+function Task({
+	setEditModalVisible,
+	task,
+	data,
+	setSpecificTask,
+	getPoms,
+	setCurrentTimer,
+	setAcceptChange,
+}) {
+
+	function combineModuleAndTask(event) {
+		setEditModalVisible(true);
+		setSpecificTask(task);
+	}
+	function handleDeleteSubmit(event) {
+		axios
+			.delete(`https://pomodor-api.herokuapp.com/poms/${task.name}`)
+			.then((res) => {
+				if (res.status === 204) {
+					getPoms();
+				}
+			});
+	}
+
+	function bringTimer(event) {
+		setCurrentTimer(task);
+		setAcceptChange(true);
+	}
 	return (
 		<li className="taskList">
 			{task.name}
-			<button className="editButton" onClick={setEditModalVisible}>
-				<i className="fa-solid fa-pen-to-square"></i>
-			</button>
+			<div className="button-container">
+				<button className="button" onClick={combineModuleAndTask}>
+					<i className="fa-solid fa-pen-to-square"></i>
+				</button>
+				<button className="button" type="button" onClick={handleDeleteSubmit}>
+					<i className="fa-solid fa-trash-can"></i>
+				</button>
+				<button className="button" onClick={bringTimer}>
+					<i className="fa-solid fa-clock-rotate-left"></i>
+				</button>
+			</div>
 		</li>
 	);
 }

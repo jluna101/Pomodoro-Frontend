@@ -1,43 +1,46 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import './EditForm.css';
 
-function EditForm({ setEditModalVisible }) {
-	const initialTask = {
-		name: "",
-		workLength: 0,
-		shortBreak: 0,
-		sessionsBreak: 0,
-		longBreak: 0,
-		// get request to pull in existing task data based on ID
+function EditForm({ setEditModalVisible, data, getPoms }) {
+	useEffect(async () => {
+		try {
+			const response = await axios
+				.get(`https://pomodor-api.herokuapp.com/poms/${task.name}`)
+				.then((response) => {
+					setTask(response.data);
+				});
+		} catch (error) {
+			console.log(error);
+		}
+	}, []);
 
-		// axios.get(`https://pomodor-api.herokuapp.com/poms/${task.name}`, task)
-	// 	axios
-	// 	.get('http://localhost:3111/icecreams')
-	// 	.then((res) => setFlavors(res.data));
-	};
-
-
-	const [task, setTask] = useState(initialTask);
+	const [task, setTask] = useState([]);
 	function handleChange(event) {
 		setTask({ ...task, [event.target.id]: event.target.value });
 	}
-
 	function handleSubmit(event) {
 		event.preventDefault();
-		// need axios put request here, body is task state.
+		axios
+			.put(`https://pomodor-api.herokuapp.com/poms/${data.name}`, task)
+			.then((res) => {
+				if (res.status === 200) {
+					getPoms();
+				}
+			});
 		setEditModalVisible(false);
 	}
 
-	function handleDeleteSubmit(event) {}
 	return (
 		<div className="modal-container">
 			<div className="task-form-container">
 				<form className="task-create-form" onSubmit={handleSubmit}>
-					<div className="task-parameter">
+					<div className="task-parameter task-form-header">
 						<label htmlFor="name">Name of task: </label>
 						<input
 							type="text"
 							id="name"
+							placeholder={data.name}
 							value={task.name}
 							onChange={handleChange}
 							required
@@ -49,8 +52,10 @@ function EditForm({ setEditModalVisible }) {
 							type="number"
 							id="workLength"
 							value={task.workLength}
+							placeholder={data.workLength}
 							onChange={handleChange}
 							required
+							min="0"
 						/>
 					</div>
 					<div className="task-parameter">
@@ -59,8 +64,10 @@ function EditForm({ setEditModalVisible }) {
 							type="number"
 							id="shortBreak"
 							value={task.shortBreak}
+							placeholder={data.shortBreak}
 							onChange={handleChange}
 							required
+							min="0"
 						/>
 					</div>
 					<div className="task-parameter">
@@ -69,8 +76,10 @@ function EditForm({ setEditModalVisible }) {
 							type="number"
 							id="longBreak"
 							value={task.longBreak}
+							placeholder={data.longBreak}
 							onChange={handleChange}
 							required
+							min="0"
 						/>
 					</div>
 					<div className="task-parameter">
@@ -81,11 +90,16 @@ function EditForm({ setEditModalVisible }) {
 							type="number"
 							id="sessionsBreak"
 							value={task.sessionsBreak}
+							placeholder={data.sessionsBreak}
 							onChange={handleChange}
 							required
+							min="0"
 						/>
 					</div>
-					<button type="submit">Save</button>
+
+					<button type="submit" className="saveButton">
+						<i className="fa-solid fa-check"></i>
+					</button>
 				</form>
 			</div>
 		</div>

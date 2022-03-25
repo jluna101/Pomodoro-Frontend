@@ -5,10 +5,12 @@
 	flex-direction: column;
 	align-items: center;
 	justify-content: space-evenly;
-	border: solid black;
 	border-width: 2px 2px 0 2px;
 	font-size: 4em;
 	font-weight: bold;
+	border: 2px solid black;
+	border-bottom: none;
+	height: 100%;
 }
 
 .clock-container {
@@ -16,22 +18,65 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	height: 300px;
-	width: 300px;
+	height: 6.5em;
+	width: 6.5em;
 	border-radius: 50%;
 	background-color: var(--gray);
 	color: var(--dark);
+	position: relative;
 }
 
-.timer-button {
+.message-container {
+	position: absolute;
+	top: 15%;
+}
+
+.timer-buttons {
 	display: inline-block;
-	width: auto;
-	height: auto;
+	width: 45px;
+	height: 45px;
 	font-size: 0.33em;
-	margin: 15px;
+	margin: 30px;
 	border: none;
 	border-radius: 50%;
 	background-color: var(--lightRed);
 	color: var(--light);
-	padding: 10px;
+}
+
+/* Mobile Media Query */
+@media (max-width: 480px) {
+	.timer-container {
+		grid-row: 2;
+		border: 2px solid black;
+		font-size: 2em;
+	}
+
+	.clock-container {
+		height: 6em;
+		width: 6em;
+		font-size: 1em;
+	}
+	.timer-button {
+		font-size: 0.25em;
+	}
+}
+
+/* Tablet Media Query */
+@media (min-device-width: 480px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
+	.timer-container {
+		grid-row: 2;
+		padding: 3%;
+		border: 2px solid black;
+		font-size: 3em;
+	}
+
+	.clock-container {
+		height: 6em;
+		width: 6em;
+		font-size: 1.3em;
+	}
+	.timer-buttons {
+		margin-top: 2%;
+		font-size: 0.33em;
+	}
 }

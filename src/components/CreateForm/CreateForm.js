@@ -1,11 +1,11 @@
 // Form.js
-import React, { useState } from 'react';
-import './CreateForm.css';
-import axios from 'axios';
+import React, { useState } from "react";
+import "./CreateForm.css";
+import axios from "axios";
 
-function CreateForm({ setCreateModalVisible }) {
+function CreateForm({ setCreateModalVisible, getPoms }) {
 	const initialTask = {
-		name: '',
+		name: "",
 		workLength: 0,
 		shortBreak: 0,
 		sessionsBreak: 0,
@@ -15,19 +15,22 @@ function CreateForm({ setCreateModalVisible }) {
 	function handleChange(event) {
 		setTask({ ...task, [event.target.id]: event.target.value });
 	}
-	// original code
+	
 	function handleSubmit(event) {
 		event.preventDefault();
-		// need axios post request here, body is task state.
-		axios.post('https://pomodor-api.herokuapp.com/poms', task);
+		axios.post("https://pomodor-api.herokuapp.com/poms", task).then((res) => {
+			if (res.status === 201) {
+				getPoms();
+			}
+		});
 		setCreateModalVisible(false);
 	}
 
 	return (
-		<div className="modal-container">
+		<div className="modal-container create-form-modal">
 			<div className="task-form-container">
 				<form className="task-create-form" onSubmit={handleSubmit}>
-					<h3 className="createTaskHeader">Create a task</h3>
+					<h3 className="createTaskHeader">Create a Task</h3>
 					<div className="task-parameter">
 						<label htmlFor="name">Name of task: </label>
 						<input

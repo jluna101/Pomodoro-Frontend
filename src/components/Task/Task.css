@@ -1,20 +1,39 @@
 .taskList {
 	box-sizing: border-box;
 	min-width: 50%;
-	padding-left: 2%;
+	margin-bottom: 0.5rem;
+	position: relative;
+	top: 1%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-wrap: wrap;
 }
 
-.editButton {
-	margin-left: 20px;
-
-	/* position: absolute;
-	left: 80%;
-	/* top: 5%; */
-	/* font-size: 14px;
+.button {
+	width: 25px;
+	height: 25px;
+	font-size: 0.75em;
 	border: none;
-	border-radius: 2px;
-	margin: 2px;
+	margin-right: 2%;
+	border-radius: 50%;
 	background-color: var(--lightRed);
 	color: var(--light);
-	padding: 10px; */
+	margin: 0 0.25rem;
+}
+
+.button-container {
+	display: inline;
+	padding-left: 0.5rem;
+	padding-right: 0.5rem;
+}
+
+@media (max-width: 480px) {
+	.button {
+		width: 20px;
+		height: 20px;
+	}
+	.taskList {
+		margin-bottom: 0.25rem;
+	}
 }
