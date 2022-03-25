@@ -10,18 +10,24 @@ import React, { useState, useEffect } from "react";
 function App() {
 	const [currentTimer, setCurrentTimer] = useState(null);
 	const [acceptChange, setAcceptChange] = useState(false);
+	const [pomsComplete, setPomsComplete] = useState(0);
+	const [breaksCounter, setBreaksCounter] = useState(0);
 	return (
 		<div className="app-container">
 			<Timer
 				currentTimer={currentTimer}
 				acceptChange={acceptChange}
 				setAcceptChange={setAcceptChange}
+				setPomsComplete={setPomsComplete}
+				pomsComplete={pomsComplete}
+				breaksCounter={breaksCounter}
+				setBreaksCounter={setBreaksCounter}
 			/>
 			<TaskList
 				setCurrentTimer={setCurrentTimer}
 				setAcceptChange={setAcceptChange}
 			/>
-			<Metrics />
+			<Metrics pomsComplete={pomsComplete} breaksCounter={breaksCounter} />
 		</div>
 	);
 }

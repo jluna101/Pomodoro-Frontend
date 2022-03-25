@@ -1,9 +1,9 @@
 // Metrics.js
 
-import React from 'react';
-import './Metrics.css';
+import React, { useState } from "react";
+import "./Metrics.css";
 
-function Metrics(props) {
+function Metrics({ pomsComplete, breaksCounter }) {
 	return (
 		<div className="metrics-container">
 			<h2 className="metricsHeader">Metrics Container</h2>

@@ -1,8 +1,16 @@
-import React from 'react';
-import { useState, useEffect, useRef } from 'react';
-import './Timer.css';
+import React from "react";
+import { useState, useEffect, useRef } from "react";
+import "./Timer.css";
 
-function Timer({ currentTimer, acceptChange, setAcceptChange }) {
+function Timer({
+	currentTimer,
+	acceptChange,
+	setAcceptChange,
+	pomsComplete,
+	setPomsComplete,
+	setBreaksCounter,
+	breaksCounter,
+}) {
 	// when timer reaches 0, stop timer
 	// render timer data on screen with useState
 	let clockInterval;
@@ -10,11 +18,12 @@ function Timer({ currentTimer, acceptChange, setAcceptChange }) {
 	const [displayMinutes, setDisplayMinutes] = useState(0);
 	const [displaySeconds, setDisplaySeconds] = useState(0);
 	const [isActive, setIsActive] = useState(false);
-	const [breaksCounter, setBreaksCounter] = useState(0);
 	const [isBreak, setIsBreak] = useState(false);
 
 	function toggleTimer() {
-		setIsActive(!isActive);
+		if (currentTimer) {
+			setIsActive(!isActive);
+		}
 	}
 
 	function setBaseTimer(currentTimer) {
@@ -29,20 +38,40 @@ function Timer({ currentTimer, acceptChange, setAcceptChange }) {
 			setTimer(currentTimer.workLength * 60);
 			setDisplayMinutes(currentTimer.workLength);
 			setDisplaySeconds(0);
+			setIsBreak(!isBreak);
 		} else if (!isBreak) {
 			clearInterval(clockInterval);
 			setTimer(currentTimer.shortBreak * 60);
 			setDisplayMinutes(currentTimer.shortBreak);
 			setDisplaySeconds(0);
+			setIsBreak(!isBreak);
 		} else if (!isBreak && breaksCounter + 1 === currentTimer.sessionsBreak) {
+			clearInterval(clockInterval);
+			setTimer(currentTimer.longBreak * 60);
+			setDisplayMinutes(currentTimer.longBreak);
+			setDisplaySeconds(0);
+			setIsBreak(!isBreak);
+		}
+	}
+
+	function resetButton(event) {
+		if (!isBreak) {
+			clearInterval(clockInterval);
+			setTimer(currentTimer.workLength * 60);
+			setDisplayMinutes(currentTimer.workLength);
+			setDisplaySeconds(0);
+		} else if (isBreak) {
+			clearInterval(clockInterval);
+			setTimer(currentTimer.shortBreak * 60);
+			setDisplayMinutes(currentTimer.shortBreak);
+			setDisplaySeconds(0);
+		} else if (isBreak && breaksCounter + 1 === currentTimer.sessionsBreak) {
 			clearInterval(clockInterval);
 			setTimer(currentTimer.longBreak * 60);
 			setDisplayMinutes(currentTimer.longBreak);
 			setDisplaySeconds(0);
 		}
 	}
-
-	function resetButton(event) {}
 	useEffect(() => {
 		if (isActive) {
 			if (timer > -1) {
@@ -68,9 +97,9 @@ function Timer({ currentTimer, acceptChange, setAcceptChange }) {
 					setBreaksCounter(breaksCounter + 1);
 					resetTimer();
 				} else {
-					// else: work is done,
+					// else: work interval is done.
 					console.log("initiate short break");
-
+					setPomsComplete(pomsComplete + 1);
 					toggleTimer();
 					resetTimer();
 				}
@@ -84,6 +113,8 @@ function Timer({ currentTimer, acceptChange, setAcceptChange }) {
 			// pause logic
 			console.log("pause");
 			clearInterval(clockInterval);
+		} else if (!currentTimer && timer === 0) {
+			return;
 		} else {
 			// code to prevent breaking on render
 			console.log("do nothing!");
@@ -108,7 +139,7 @@ function Timer({ currentTimer, acceptChange, setAcceptChange }) {
 					)}
 				</button>
 
-				<button className="timer-buttons" onClick={resetTimer}>
+				<button className="timer-buttons" onClick={resetButton}>
 					<i className="fa-solid fa-rotate-right"></i>
 				</button>
 			</div>
