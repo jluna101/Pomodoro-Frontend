@@ -11,6 +11,7 @@ function TaskList({ setCurrentTimer, setAcceptChange }) {
 	const [createModalVisible, setCreateModalVisible] = useState(false);
 	const [editModalVisible, setEditModalVisible] = useState(false);
 	const [data, setData] = useState([]);
+	const [specificTask, setSpecificTask] = useState('hello');
 	function createModalToggle(event) {
 		setCreateModalVisible(true);
 	}
@@ -18,6 +19,10 @@ function TaskList({ setCurrentTimer, setAcceptChange }) {
 		setEditModalVisible(true);
 	}
 	useEffect(async () => {
+	getPoms();
+	}, [editModalVisible]);
+
+	async function getPoms(){
 		try {
 			const response = await axios
 				.get("https://pomodor-api.herokuapp.com/poms")
@@ -27,14 +32,16 @@ function TaskList({ setCurrentTimer, setAcceptChange }) {
 		} catch (error) {
 			console.log(error);
 		}
-	}, []);
+	}
+
+
 	return (
 		<div className="tasklist-container">
 			{createModalVisible && (
-				<CreateForm setCreateModalVisible={setCreateModalVisible} />
+				<CreateForm setCreateModalVisible={setCreateModalVisible} getPoms={getPoms} />
 			)}
 			{editModalVisible && (
-				<EditForm setEditModalVisible={setEditModalVisible} />
+				<EditForm setEditModalVisible={setEditModalVisible} data={specificTask} getPoms={getPoms}/>
 			)}
 			<button id="create-button">
 				<i className="fa-solid fa-plus" onClick={createModalToggle}></i>
@@ -48,6 +55,9 @@ function TaskList({ setCurrentTimer, setAcceptChange }) {
 								setEditModalVisible={setEditModalVisible}
 								key={task._id}
 								task={task}
+								data={specificTask}
+								setSpecificTask={setSpecificTask}
+								getPoms={getPoms}
 								setCurrentTimer={setCurrentTimer}
 								setAcceptChange={setAcceptChange}
 							/>

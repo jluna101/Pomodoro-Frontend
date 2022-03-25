@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import './CreateForm.css';
 import axios from 'axios';
 
-function CreateForm({ setCreateModalVisible }) {
+function CreateForm({ setCreateModalVisible, getPoms }) {
 	const initialTask = {
 		name: '',
 		workLength: 0,
@@ -19,7 +19,12 @@ function CreateForm({ setCreateModalVisible }) {
 	function handleSubmit(event) {
 		event.preventDefault();
 		// need axios post request here, body is task state.
-		axios.post('https://pomodor-api.herokuapp.com/poms', task);
+		axios.post('https://pomodor-api.herokuapp.com/poms', task)
+		.then((res) => {
+			if(res.status === 201){
+				getPoms();
+			}
+		})
 		setCreateModalVisible(false);
 	}
 
