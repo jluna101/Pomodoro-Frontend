@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import './EditForm.css';
 
 function EditForm({ setEditModalVisible, data, getPoms }) {
 	//
@@ -42,11 +43,11 @@ function EditForm({ setEditModalVisible, data, getPoms }) {
 	}
 
 	return (
-		<div className='modal-container'>
-			<div className='task-form-container'>
-				<form className='task-create-form' onSubmit={handleSubmit}>
-					<div className='task-parameter'>
-						<label htmlFor='name'>Name of task: </label>
+		<div className="modal-container">
+			<div className="task-form-container">
+				<form className="task-create-form" onSubmit={handleSubmit}>
+					<div className="task-parameter task-form-header">
+						<label htmlFor="name">Name of task: </label>
 						<input
 							type='text'
 							id='name'
@@ -106,7 +107,10 @@ function EditForm({ setEditModalVisible, data, getPoms }) {
 							min='0'
 						/>
 					</div>
-					<button type='submit'>Save</button>
+
+					<button type="submit" className="saveButton">
+						<i className="fa-solid fa-check"></i>
+					</button>
 				</form>
 			</div>
 		</div>
