@@ -24,15 +24,14 @@
 
 .timer-buttons {
 	display: inline-block;
-	width: auto;
-	height: auto;
+	width: 45px;
+	height: 45px;
 	font-size: 0.33em;
-	margin: 15px;
+	margin: 30px;
 	border: none;
 	border-radius: 50%;
 	background-color: var(--lightRed);
 	color: var(--light);
-	padding: 10px;
 }
 
 /* Mobile Media Query */

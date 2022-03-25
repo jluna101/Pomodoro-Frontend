@@ -22,7 +22,7 @@ body {
 }
 
 .app-container {
-	font-family: 'Inter', sans-serif;
+	font-family: "Inter", sans-serif;
 	/* font-family: 'Karla', sans-serif; */
 	display: grid;
 	grid-template-columns: 0.5fr 0.5fr;
@@ -31,13 +31,18 @@ body {
 	width: 100%;
 }
 
+ul {
+	list-style-type: none;
+	padding-left: 1rem;
+}
+
 /* Media Queries */
 
 /* Mobile: */
 
 @media (max-width: 480px) {
 	.app-container {
-		font-family: 'Inter', sans-serif;
+		font-family: "Inter", sans-serif;
 		display: grid;
 		grid-template-rows: 0.25fr 0.5fr 0.25fr;
 		grid-template-columns: 1fr;
@@ -50,7 +55,7 @@ body {
 
 @media (min-device-width: 480px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
 	.app-container {
-		font-family: 'Inter', sans-serif;
+		font-family: "Inter", sans-serif;
 		display: grid;
 		grid-template-rows: 0.25fr 0.5fr 0.25fr;
 		grid-template-columns: 1fr;

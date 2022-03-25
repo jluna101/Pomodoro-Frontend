@@ -23,8 +23,7 @@
 
 #create-button {
 	position: absolute;
-	left: 80%;
-	/* top: 5%; */
+	left: 85%;
 	font-size: 14px;
 	margin: 15px;
 	border: none;
@@ -32,6 +31,8 @@
 	background-color: var(--lightRed);
 	color: var(--light);
 	padding: 10px;
+	width: 35px;
+	height: 35px;
 }
 
 .listHeader {
@@ -66,6 +67,9 @@
 
 	#create-button {
 		margin-bottom: 10px;
+		width: 25px;
+		height: 25px;
+		padding: 0;
 	}
 
 	.saveButton {
@@ -97,5 +101,8 @@
 
 	#create-button {
 		font-size: 10px;
+	}
+	.listHeader {
+		margin: 0;
 	}
 }

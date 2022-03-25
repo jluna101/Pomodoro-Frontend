@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import './Task.css';
+import React, { useState } from "react";
+import axios from "axios";
+import "./Task.css";
 
 function Task({
 	setEditModalVisible,
@@ -36,16 +36,20 @@ function Task({
 		setAcceptChange(true);
 	}
 	return (
-		<li className='taskList'>
+		<li className="taskList">
 			{task.name}
-			<button className='editButton' onClick={combineModuleAndTask}>
-				<i className='fa-solid fa-pen-to-square'></i>
-			</button>
-			{/* attempt to add delete button as sibling to edit button */}
-			<button type='button' onClick={handleDeleteSubmit}>
-				X
-			</button>
-			<button onClick={bringTimer}>Add to timer</button>
+			<div className="button-container">
+				<button className="button" onClick={combineModuleAndTask}>
+					<i className="fa-solid fa-pen-to-square"></i>
+				</button>
+				{/* attempt to add delete button as sibling to edit button */}
+				<button className="button" type="button" onClick={handleDeleteSubmit}>
+					<i className="fa-solid fa-trash-can"></i>
+				</button>
+				<button className="button" onClick={bringTimer}>
+					<i className="fa-solid fa-clock-rotate-left"></i>
+				</button>
+			</div>
 		</li>
 	);
 }

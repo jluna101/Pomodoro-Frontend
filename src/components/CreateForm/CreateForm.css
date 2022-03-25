@@ -1,10 +1,10 @@
-/* .modal-container {
+.modal-container {
 	position: absolute;
 	width: 100%;
 	height: 100%;
 	z-index: 4;
 	background-color: rgba(0, 0, 0, 0.65);
-} */
+}
 
 /* "Create a task modal" */
 .task-form-container {
@@ -25,18 +25,37 @@
 	padding-right: 1%;
 	margin-left: -3%;
 	margin-top: -3%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
 }
 
 h3 {
 	text-align: center;
+	margin: 0;
+}
+
+#name {
+	width: 150px;
+}
+.task-parameter {
+	display: flex;
+	justify-content: space-between;
+}
+.task-parameter > input {
+	width: 40px;
+	height: 10%;
+	margin: 2px;
 }
 
 .saveButton {
 	font-size: 10px;
-	margin-top: 3%;
-	margin-bot: 3%;
+	/* margin-bot: 3%; */
 	/* margin: 15px; */
 	border: none;
+	width: 30px;
+	height: 30px;
 	border-radius: 50%;
 	background-color: var(--lightRed);
 	color: var(--light);
