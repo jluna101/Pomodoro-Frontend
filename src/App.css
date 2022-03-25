@@ -20,7 +20,6 @@ body {
 
 .app-container {
 	font-family: 'Inter', sans-serif;
-	/* font-family: 'Karla', sans-serif; */
 	display: grid;
 
 	width: 100vw;

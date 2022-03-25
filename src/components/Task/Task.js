@@ -11,24 +11,19 @@ function Task({
 	setCurrentTimer,
 	setAcceptChange,
 }) {
-	// const [specificTask, setSpecificTask] = useState(data)
 
 	function combineModuleAndTask(event) {
 		setEditModalVisible(true);
 		setSpecificTask(task);
-		console.log(`opening form for ${task.name}`);
 	}
-	// DELETE Route
 	function handleDeleteSubmit(event) {
 		axios
 			.delete(`https://pomodor-api.herokuapp.com/poms/${task.name}`)
 			.then((res) => {
-				console.log(res);
 				if (res.status === 204) {
 					getPoms();
 				}
 			});
-		// setEditModalVisible(false);
 	}
 
 	function bringTimer(event) {
@@ -42,7 +37,6 @@ function Task({
 				<button className="button" onClick={combineModuleAndTask}>
 					<i className="fa-solid fa-pen-to-square"></i>
 				</button>
-				{/* attempt to add delete button as sibling to edit button */}
 				<button className="button" type="button" onClick={handleDeleteSubmit}>
 					<i className="fa-solid fa-trash-can"></i>
 				</button>

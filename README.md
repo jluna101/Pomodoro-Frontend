@@ -15,7 +15,7 @@ Members:
 
 ### Overview
 
-This is a Pomodoro App that helps optimize study and break times through the use of Pomodoro intervals. The structured work and break timer helps students stay on task. The schedule breaks helps increase productive for longer periods. Pomodoro interval data is accessed in the front end, and the data gets sent to the back end for statistics and analysis.
+This is a Pomodoro App that helps optimize study and break times through the use of Pomodoro intervals. The structured work and break timer helps students stay on task. The schedule breaks helps increase productivity for longer periods. Pomodoro interval data is accessed in the front end, and the data gets sent to the back end for statistics and analysis.
 
 ### Sample Timer Code Snippet
 
@@ -60,14 +60,11 @@ function setBaseTimer(currentTimer) {
 ![Screen Shot 2022-03-21 at 8 11 01 PM](https://media.git.generalassemb.ly/user/41448/files/aa3c4180-a956-11ec-8c80-abef0f4d5d6b)
 ![Screen Shot 2022-03-21 at 8 11 13 PM](https://media.git.generalassemb.ly/user/41448/files/b1634f80-a956-11ec-93aa-5c88dde19a25)
 
-<!-- #### Stretch Goals
+#### Future Development Stretch Goals
+
 ![Screen Shot 2022-03-21 at 8 11 26 PM](https://media.git.generalassemb.ly/user/41448/files/b1634f80-a956-11ec-92be-5a66f7848e1e)
-![Screen Shot 2022-03-21 at 8 11 40 PM](https://media.git.generalassemb.ly/user/41448/files/b1fbe600-a956-11ec-9fad-7fc5c0763555) -->
+![Screen Shot 2022-03-21 at 8 11 40 PM](https://media.git.generalassemb.ly/user/41448/files/b1fbe600-a956-11ec-9fad-7fc5c0763555)
 
 ### Request and Response Diagram
 
 ![Express-API-diagram drawio](https://media.git.generalassemb.ly/user/41448/files/d0e88f80-a9cb-11ec-8a10-0503929c5cd4)
-
-### Component Hierarchy
-
-Coming soon!

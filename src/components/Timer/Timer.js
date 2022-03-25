@@ -11,8 +11,6 @@ function Timer({
 	setBreaksCounter,
 	breaksCounter,
 }) {
-	// when timer reaches 0, stop timer
-	// render timer data on screen with useState
 	let clockInterval;
 	const [timer, setTimer] = useState(0);
 	const [displayMinutes, setDisplayMinutes] = useState(0);
@@ -80,26 +78,21 @@ function Timer({
 				}, 100);
 				setDisplayMinutes(Math.floor(timer / 60));
 				setDisplaySeconds(timer % 60);
-				console.log('tick');
 			} else if (timer < 1) {
 				// when the timer hits 0, initiate break logic below
 				if (breaksCounter + 1 === currentTimer.sessionsBreak && !isBreak) {
 					// hit long break, clear breaks to 0, activateLongBreakTimer
-					console.log('initiate long break');
 					toggleTimer();
 					setPomsComplete(pomsComplete + 1);
-					// reset break counter
 					setIsBreak(!isBreak);
 					resetTimer();
 				} else if (isBreak) {
 					// break is done, go back to work, reset Timer to regular interval
-					console.log('initiate work');
 					toggleTimer();
 					setIsBreak(!isBreak);
 					resetTimer();
 				} else {
 					// else: work interval is done.
-					console.log('initiate short break');
 					setIsBreak(!isBreak);
 					setPomsComplete(pomsComplete + 1);
 					toggleTimer();
@@ -107,13 +100,11 @@ function Timer({
 				}
 			}
 		} else if (acceptChange && !isActive) {
-			console.log("I'm trying to change");
 			setBaseTimer(currentTimer);
 			setAcceptChange(false);
 			setBreaksCounter(0);
 		} else if (!isActive && timer !== 0) {
 			// pause logic
-			console.log('pause');
 			clearInterval(clockInterval);
 		} else if (!currentTimer && timer === 0) {
 			return;

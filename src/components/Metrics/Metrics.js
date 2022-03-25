@@ -8,7 +8,6 @@ function Metrics({ pomsComplete, breaksCounter, session }) {
 	useEffect(() => {
 		if (session) {
 			setSessionsRemaining(session.sessionsBreak - breaksCounter);
-			console.log("setsessions");
 		} else {
 			return;
 		}

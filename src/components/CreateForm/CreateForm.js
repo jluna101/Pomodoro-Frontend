@@ -15,10 +15,9 @@ function CreateForm({ setCreateModalVisible, getPoms }) {
 	function handleChange(event) {
 		setTask({ ...task, [event.target.id]: event.target.value });
 	}
-	// original code
+	
 	function handleSubmit(event) {
 		event.preventDefault();
-		// need axios post request here, body is task state.
 		axios.post("https://pomodor-api.herokuapp.com/poms", task).then((res) => {
 			if (res.status === 201) {
 				getPoms();

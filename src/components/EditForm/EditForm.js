@@ -3,16 +3,6 @@ import axios from 'axios';
 import './EditForm.css';
 
 function EditForm({ setEditModalVisible, data, getPoms }) {
-	//
-	// let initialTask = {
-	// 	name: '',
-	// 	workLength: 0,
-	// 	shortBreak: 0,
-	// 	sessionsBreak: 0,
-	// 	longBreak: 0,
-	// };
-	//
-	// const [task, setTask] = useState(initialTask);
 	useEffect(async () => {
 		try {
 			const response = await axios
@@ -29,7 +19,6 @@ function EditForm({ setEditModalVisible, data, getPoms }) {
 	function handleChange(event) {
 		setTask({ ...task, [event.target.id]: event.target.value });
 	}
-	// PUT Route
 	function handleSubmit(event) {
 		event.preventDefault();
 		axios
@@ -49,62 +38,62 @@ function EditForm({ setEditModalVisible, data, getPoms }) {
 					<div className="task-parameter task-form-header">
 						<label htmlFor="name">Name of task: </label>
 						<input
-							type='text'
-							id='name'
+							type="text"
+							id="name"
 							placeholder={data.name}
 							value={task.name}
 							onChange={handleChange}
 							required
 						/>
 					</div>
-					<div className='task-parameter'>
-						<label htmlFor='workLength'>Length of work sessions:</label>
+					<div className="task-parameter">
+						<label htmlFor="workLength">Length of work sessions:</label>
 						<input
-							type='number'
-							id='workLength'
+							type="number"
+							id="workLength"
 							value={task.workLength}
 							placeholder={data.workLength}
 							onChange={handleChange}
 							required
-							min='0'
+							min="0"
 						/>
 					</div>
-					<div className='task-parameter'>
-						<label htmlFor='shortBreak'>Length of short breaks:</label>
+					<div className="task-parameter">
+						<label htmlFor="shortBreak">Length of short breaks:</label>
 						<input
-							type='number'
-							id='shortBreak'
+							type="number"
+							id="shortBreak"
 							value={task.shortBreak}
 							placeholder={data.shortBreak}
 							onChange={handleChange}
 							required
-							min='0'
+							min="0"
 						/>
 					</div>
-					<div className='task-parameter'>
-						<label htmlFor='longBreak'>Length of long breaks:</label>
+					<div className="task-parameter">
+						<label htmlFor="longBreak">Length of long breaks:</label>
 						<input
-							type='number'
-							id='longBreak'
+							type="number"
+							id="longBreak"
 							value={task.longBreak}
 							placeholder={data.longBreak}
 							onChange={handleChange}
 							required
-							min='0'
+							min="0"
 						/>
 					</div>
-					<div className='task-parameter'>
-						<label htmlFor='sessionsBreak'>
+					<div className="task-parameter">
+						<label htmlFor="sessionsBreak">
 							Number of work sessions per long break:
 						</label>
 						<input
-							type='number'
-							id='sessionsBreak'
+							type="number"
+							id="sessionsBreak"
 							value={task.sessionsBreak}
 							placeholder={data.sessionsBreak}
 							onChange={handleChange}
 							required
-							min='0'
+							min="0"
 						/>
 					</div>
 
