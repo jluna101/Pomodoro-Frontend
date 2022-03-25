@@ -9,7 +9,7 @@
 	font-size: 4em;
 	font-weight: bold;
 	border: 2px solid black;
-	border-bottom: none; 
+	border-bottom: none;
 	height: 100%;
 }
 
@@ -23,6 +23,12 @@
 	border-radius: 50%;
 	background-color: var(--gray);
 	color: var(--dark);
+	position: relative;
+}
+
+.message-container {
+	position: absolute;
+	top: 15%;
 }
 
 .timer-buttons {

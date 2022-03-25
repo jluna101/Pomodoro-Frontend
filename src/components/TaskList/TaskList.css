@@ -12,13 +12,13 @@
 	font-size: 1em;
 	color: var(--gray);
 	font-weight: bolder;
-	
 }
 
 .tasklist-list {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	grid-columns: 1 / span 2;
+	margin-top: 4%;
 }
 
 #create-button {
@@ -50,8 +50,8 @@
 		grid-row: 1;
 		grid-column: 1 / span 2;
 		font-size: 0.75em;
-		border: 2px solid black ;
-		border-bottom: none; 
+		border: 2px solid black;
+		border-bottom: none;
 	}
 	.tasklist-list {
 		display: grid;
@@ -83,8 +83,8 @@
 	.tasklist-container {
 		grid-row: 1;
 		grid-column: 1 / span 2;
-		border: 2px solid black ;
-		border-bottom: none; 
+		border: 2px solid black;
+		border-bottom: none;
 		font-size: 1em;
 	}
 	.tasklist-list {

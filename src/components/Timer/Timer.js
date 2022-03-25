@@ -1,6 +1,6 @@
-import React from "react";
-import { useState, useEffect, useRef } from "react";
-import "./Timer.css";
+import React from 'react';
+import { useState, useEffect, useRef } from 'react';
+import './Timer.css';
 
 function Timer({
 	currentTimer,
@@ -38,7 +38,6 @@ function Timer({
 			setTimer(currentTimer.workLength * 60);
 			setDisplayMinutes(currentTimer.workLength);
 			setDisplaySeconds(0);
-			setPomsComplete(pomsComplete + 1);
 			setIsBreak(!isBreak);
 		} else if (!isBreak && breaksCounter + 1 === currentTimer.sessionsBreak) {
 			clearInterval(clockInterval);
@@ -61,15 +60,15 @@ function Timer({
 			setTimer(currentTimer.workLength * 60);
 			setDisplayMinutes(currentTimer.workLength);
 			setDisplaySeconds(0);
+		} else if (isBreak && breaksCounter === 0) {
+			clearInterval(clockInterval);
+			setTimer(currentTimer.longBreak * 60);
+			setDisplayMinutes(currentTimer.longBreak);
+			setDisplaySeconds(0);
 		} else if (isBreak) {
 			clearInterval(clockInterval);
 			setTimer(currentTimer.shortBreak * 60);
 			setDisplayMinutes(currentTimer.shortBreak);
-			setDisplaySeconds(0);
-		} else if (isBreak && breaksCounter + 1 === currentTimer.sessionsBreak) {
-			clearInterval(clockInterval);
-			setTimer(currentTimer.longBreak * 60);
-			setDisplayMinutes(currentTimer.longBreak);
 			setDisplaySeconds(0);
 		}
 	}
@@ -81,26 +80,28 @@ function Timer({
 				}, 100);
 				setDisplayMinutes(Math.floor(timer / 60));
 				setDisplaySeconds(timer % 60);
-				console.log("tick");
+				console.log('tick');
 			} else if (timer < 1) {
 				// when the timer hits 0, initiate break logic below
 				if (breaksCounter + 1 === currentTimer.sessionsBreak && !isBreak) {
 					// hit long break, clear breaks to 0, activateLongBreakTimer
-					console.log("initiate long break");
+					console.log('initiate long break');
 					toggleTimer();
+					setPomsComplete(pomsComplete + 1);
 					// reset break counter
 					setIsBreak(!isBreak);
 					resetTimer();
 				} else if (isBreak) {
 					// break is done, go back to work, reset Timer to regular interval
-					console.log("initiate work");
+					console.log('initiate work');
 					toggleTimer();
 					setIsBreak(!isBreak);
 					resetTimer();
 				} else {
 					// else: work interval is done.
-					console.log("initiate short break");
+					console.log('initiate short break');
 					setIsBreak(!isBreak);
+					setPomsComplete(pomsComplete + 1);
 					toggleTimer();
 					resetTimer();
 				}
@@ -112,13 +113,13 @@ function Timer({
 			setBreaksCounter(0);
 		} else if (!isActive && timer !== 0) {
 			// pause logic
-			console.log("pause");
+			console.log('pause');
 			clearInterval(clockInterval);
 		} else if (!currentTimer && timer === 0) {
 			return;
 		} else {
 			// code to prevent breaking on render
-			console.log("do nothing!");
+			console.log('do nothing!');
 		}
 		return () => {
 			clearInterval(clockInterval);
@@ -128,7 +129,10 @@ function Timer({
 	return (
 		<div className="timer-container">
 			<div className="clock-container">
-				{displayMinutes}m {displaySeconds}s
+				<div className="message-container">{isBreak ? 'Break' : 'Work'}</div>
+				<div className="time-container">
+					{displayMinutes}m {displaySeconds}s
+				</div>
 			</div>
 
 			<div className="buttons-container">
