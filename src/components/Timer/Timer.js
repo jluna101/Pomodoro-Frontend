@@ -38,19 +38,20 @@ function Timer({
 			setTimer(currentTimer.workLength * 60);
 			setDisplayMinutes(currentTimer.workLength);
 			setDisplaySeconds(0);
-			setIsBreak(!isBreak);
-		} else if (!isBreak) {
-			clearInterval(clockInterval);
-			setTimer(currentTimer.shortBreak * 60);
-			setDisplayMinutes(currentTimer.shortBreak);
-			setDisplaySeconds(0);
+			setPomsComplete(pomsComplete + 1);
 			setIsBreak(!isBreak);
 		} else if (!isBreak && breaksCounter + 1 === currentTimer.sessionsBreak) {
 			clearInterval(clockInterval);
 			setTimer(currentTimer.longBreak * 60);
 			setDisplayMinutes(currentTimer.longBreak);
 			setDisplaySeconds(0);
-			setIsBreak(!isBreak);
+			setBreaksCounter(0);
+		} else if (!isBreak) {
+			clearInterval(clockInterval);
+			setTimer(currentTimer.shortBreak * 60);
+			setDisplayMinutes(currentTimer.shortBreak);
+			setDisplaySeconds(0);
+			setBreaksCounter(breaksCounter + 1);
 		}
 	}
 
@@ -88,18 +89,18 @@ function Timer({
 					console.log("initiate long break");
 					toggleTimer();
 					// reset break counter
-					setBreaksCounter(0);
+					setIsBreak(!isBreak);
 					resetTimer();
 				} else if (isBreak) {
 					// break is done, go back to work, reset Timer to regular interval
 					console.log("initiate work");
 					toggleTimer();
-					setBreaksCounter(breaksCounter + 1);
+					setIsBreak(!isBreak);
 					resetTimer();
 				} else {
 					// else: work interval is done.
 					console.log("initiate short break");
-					setPomsComplete(pomsComplete + 1);
+					setIsBreak(!isBreak);
 					toggleTimer();
 					resetTimer();
 				}

@@ -27,7 +27,11 @@ function App() {
 				setCurrentTimer={setCurrentTimer}
 				setAcceptChange={setAcceptChange}
 			/>
-			<Metrics pomsComplete={pomsComplete} breaksCounter={breaksCounter} />
+			<Metrics
+				pomsComplete={pomsComplete}
+				breaksCounter={breaksCounter}
+				session={currentTimer}
+			/>
 		</div>
 	);
 }
