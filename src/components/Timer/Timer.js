@@ -24,17 +24,17 @@ function Timer({ currentTimer, acceptChange, setAcceptChange }) {
 	}
 
 	function resetTimer() {
-		if (!isBreak) {
+		if (isBreak) {
 			clearInterval(clockInterval);
 			setTimer(currentTimer.workLength * 60);
 			setDisplayMinutes(currentTimer.workLength);
 			setDisplaySeconds(0);
-		} else if (isBreak) {
+		} else if (!isBreak) {
 			clearInterval(clockInterval);
 			setTimer(currentTimer.shortBreak * 60);
 			setDisplayMinutes(currentTimer.shortBreak);
 			setDisplaySeconds(0);
-		} else if (isBreak && breaksCounter + 1 === currentTimer.sessionsBreak) {
+		} else if (!isBreak && breaksCounter + 1 === currentTimer.sessionsBreak) {
 			clearInterval(clockInterval);
 			setTimer(currentTimer.longBreak * 60);
 			setDisplayMinutes(currentTimer.longBreak);
@@ -42,6 +42,7 @@ function Timer({ currentTimer, acceptChange, setAcceptChange }) {
 		}
 	}
 
+	function resetButton(event) {}
 	useEffect(() => {
 		if (isActive) {
 			if (timer > -1) {
@@ -59,18 +60,15 @@ function Timer({ currentTimer, acceptChange, setAcceptChange }) {
 					toggleTimer();
 					// reset break counter
 					setBreaksCounter(0);
-					setIsBreak(!isBreak);
 					resetTimer();
 				} else if (isBreak) {
 					// break is done, go back to work, reset Timer to regular interval
 					console.log("initiate work");
 					toggleTimer();
 					setBreaksCounter(breaksCounter + 1);
-					setIsBreak(!isBreak);
 					resetTimer();
 				} else {
 					// else: work is done,
-					setIsBreak(!isBreak);
 					console.log("initiate short break");
 
 					toggleTimer();
