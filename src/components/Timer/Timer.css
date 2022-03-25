@@ -44,16 +44,16 @@
 }
 
 /* Mobile Media Query */
-
 @media (max-width: 480px) {
 	.timer-container {
 		grid-row: 2;
 		border: 2px solid black;
+		font-size: 2em;
 	}
 
 	.clock-container {
-		height: 4em;
-		width: 4em;
+		height: 6em;
+		width: 6em;
 		font-size: 1em;
 	}
 	.timer-button {
@@ -68,6 +68,7 @@
 		padding: 3%;
 		margin: 2%;
 		border: 2px solid black;
+		font-size: 3em;
 	}
 
 	.clock-container {
