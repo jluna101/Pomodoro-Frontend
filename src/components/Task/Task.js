@@ -22,6 +22,11 @@ function Task({ setEditModalVisible, task, data, setSpecificTask, getPoms }) {
 		// setEditModalVisible(false);
 	}
 
+
+	function bringTimer(event) {
+		setCurrentTimer(task);
+		setAcceptChange(true);
+	}
 	return (
 		<li className='taskList'>
 			{task.name}

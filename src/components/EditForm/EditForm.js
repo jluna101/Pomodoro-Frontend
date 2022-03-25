@@ -12,7 +12,6 @@ function EditForm({ setEditModalVisible, data, getPoms }) {
 	// };
 	//
 	// const [task, setTask] = useState(initialTask);
-	const [task, setTask] = useState([]);
 	useEffect(async () => {
 		try {
 			const response = await axios
@@ -25,37 +24,27 @@ function EditForm({ setEditModalVisible, data, getPoms }) {
 		}
 	}, []);
 
-<<<<<<< HEAD
-=======
-		// axios.get(`https://pomodor-api.herokuapp.com/poms/${task.name}`, task)
-		// 	axios
-		// 	.get('http://localhost:3111/icecreams')
-		// 	.then((res) => setFlavors(res.data));
-	};
-
-	const [task, setTask] = useState(initialTask);
->>>>>>> 2e6d171 (add bug fix to reset button functionality)
+	const [task, setTask] = useState([]);
 	function handleChange(event) {
 		setTask({ ...task, [event.target.id]: event.target.value });
 	}
 	// PUT Route
 	function handleSubmit(event) {
 		event.preventDefault();
-		axios.put(`https://pomodor-api.herokuapp.com/poms/${data.name}`, task)
-		.then((res) => {
-			if (res.status === 200){
-				getPoms();
-			}
-		})
+		axios
+			.put(`https://pomodor-api.herokuapp.com/poms/${data.name}`, task)
+			.then((res) => {
+				if (res.status === 200) {
+					getPoms();
+				}
+			});
 		setEditModalVisible(false);
 	}
 
 	return (
 		<div className='modal-container'>
 			<div className='task-form-container'>
-				<form
-					className='task-create-form'
-					onSubmit={handleSubmit}>
+				<form className='task-create-form' onSubmit={handleSubmit}>
 					<div className='task-parameter'>
 						<label htmlFor='name'>Name of task: </label>
 						<input
